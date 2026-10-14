@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Guusje Rozendom · Portfolio</title>
+<meta name="description" content="Portfolio van Guusje Rozendom, interieurontwerper. Interieurontwerp, 3D-visuals en conceptontwerp.">
+<meta name="theme-color" content="#e9ebe6">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap">
+<style>
+/* Concept: de stalenkaart. Gipswitte ondergrond, groen-zwarte inkt, en per categorie
+   een kleur die uit haar eigen projecten komt. Eén lettertype: Bricolage Grotesque. */
+:root{
+  --plaster:#e9ebe6;      /* ondergrond */
+  --paper:#f6f7f3;        /* lichte vlakken */
+  --ink:#1c231e;          /* tekst */
+  --ink-2:#4a524c;        /* lopende tekst */
+  --mute:#7d847e;         /* bijschriften */
+  --rule:#c9cdc5;         /* lijnen */
+  --moss:#56653a;         /* Kantoor: moswanden Newminds */
+  --park:#8aa287;         /* Zorg: het park in het ziekenhuis */
+  --salmon:#e2957f;       /* Hospitality: zalmtinten de Golf */
+  --oak:#c6a377;          /* Residentieel: Japandi-eiken */
+  --accent:#9c4a4a;       /* Guusjes eigen kleur: hover, focus, actief */
+  --accent-deep:#813b3b;
+  --accent-tint:#f1e2df;
+  --f:"Bricolage Grotesque",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --gl:max(16px,env(safe-area-inset-left,0px));
+  --gr:max(16px,env(safe-area-inset-right,0px));
+  --wrap:1280px;
+  --ease:cubic-bezier(.22,.8,.24,1);
+  color-scheme:light;
+}
+@media (min-width:760px){:root{--gl:max(32px,env(safe-area-inset-left,0px));--gr:max(32px,env(safe-area-inset-right,0px))}}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--plaster);color:var(--ink);font-family:var(--f);font-optical-sizing:auto;font-size:17px;line-height:1.6;font-weight:400;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:#fff}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-left:var(--gl);padding-right:var(--gr)}
+h1,h2,h3,h4{margin:0;font-weight:600;line-height:1.05;letter-spacing:-.02em;text-wrap:balance}
+p{text-wrap:pretty}
+.page{animation:in .45s var(--ease) both}
+@keyframes in{from{opacity:0}to{opacity:1}}
+img.fade{opacity:0;transition:opacity .6s ease}
+img.fade.loaded{opacity:1}
+
+/* links & knoppen */
+.link{display:inline-flex;align-items:center;gap:.5em;font-weight:500;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.28em;transition:color .2s,text-decoration-thickness .2s}
+.link:hover{color:var(--accent);text-decoration-thickness:2px}
+.btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:500;font-size:16px;transition:background .2s}
+.btn:hover{background:var(--accent)}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px;background:var(--c,var(--ink));flex:none;vertical-align:-.05em}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--plaster) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.site-header.scrolled{border-bottom-color:var(--rule)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.logo:hover{color:var(--accent)}
+.logo{transition:color .2s;font-weight:650;font-size:18px;letter-spacing:-.02em;font-variation-settings:"wdth" 88;line-height:1}
+.head-right{display:flex;align-items:center;gap:clamp(16px,3vw,32px)}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid var(--rule);border-radius:999px;font-size:13px;font-weight:600}
+.lang a{display:grid;place-items:center;min-width:32px;height:26px;padding:0 6px;border-radius:999px;color:var(--mute);transition:color .2s,background .2s}
+.lang a:hover{color:var(--accent)}
+.lang a[aria-current]{background:var(--ink);color:var(--paper)}
+.nav{display:flex;gap:clamp(16px,3vw,32px);font-size:16px}
+.nav a{position:relative;padding:6px 0;color:var(--ink-2);transition:color .2s}
+.nav a:hover{color:var(--accent)}
+.nav a[aria-current="page"]{color:var(--ink)}
+.nav a[aria-current="page"]::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--accent);border-radius:2px}
+@media (max-width:520px){.logo{font-size:15px}.logo span{display:block}.head-right{gap:12px}.nav{gap:12px;font-size:15px}.lang a{min-width:28px;padding:0 4px}}
+
+/* home: naam */
+.name-hero{padding-top:clamp(20px,4vw,48px)}
+.name-hero h1{font-size:18.3vw;font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.86;white-space:nowrap;margin-left:-.04em}
+@media (min-width:1380px){.name-hero h1{font-size:252px}}
+.hero-split{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:clamp(20px,3vw,40px)}
+@media (min-width:860px){.hero-split{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(32px,4vw,64px);align-items:end}}
+.hero-img{margin:0;border-radius:4px;overflow:hidden;background:var(--rule);aspect-ratio:3/2}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.name-hero .pf{display:block;font-size:clamp(1.05rem,1.6vw,1.35rem);font-weight:500;font-variation-settings:"wdth" 100,"opsz" 14;letter-spacing:-.01em;line-height:1;margin:0 0 .5em .06em;white-space:normal}
+.services{list-style:none;margin:0;padding:0;font-size:clamp(1.6rem,3.2vw,2.75rem);font-weight:500;line-height:1.08;letter-spacing:-.025em;font-variation-settings:"wdth" 82}
+.services li{padding:.18em 0;border-bottom:1px solid var(--rule)}
+.services li:first-child{border-top:1px solid var(--ink)}
+.hero-cap{margin:14px 0 0;font-size:14px;color:var(--mute)}
+.hero-cap a:hover{color:var(--accent)}
+
+.statement{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:clamp(64px,9vw,128px)}
+@media (min-width:860px){.statement{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
+.statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);line-height:1.12;letter-spacing:-.025em;font-weight:450;max-width:22ch}
+.statement .side{align-self:end;padding-bottom:.4em}
+
+/* stalenkaart */
+.deck-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:clamp(72px,10vw,140px) 0 20px}
+.deck-head h2{font-size:clamp(1.25rem,1.8vw,1.5rem);font-weight:600}
+.deck{display:flex;gap:10px;height:clamp(420px,46vw,600px)}
+.swatch{position:relative;flex:1 1 0;min-width:0;display:flex;flex-direction:column;border-radius:6px;overflow:hidden;background:var(--paper);box-shadow:0 0 0 1px rgba(28,35,30,.06);transition:flex-grow .7s var(--ease)}
+.swatch .chip{position:relative;flex:1;background:var(--c);overflow:hidden}
+.swatch .chip::before{content:"";position:absolute;inset:0 0 auto 0;height:14px;background:var(--c);z-index:1}
+.swatch .chip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.04);transition:transform 1.2s var(--ease),filter .5s ease}
+.swatch .label{display:flex;flex-direction:column;justify-content:end;gap:4px;padding:14px 16px 16px;min-height:104px}
+.swatch h3{font-size:clamp(1.05rem,1.6vw,1.45rem);font-weight:600;letter-spacing:-.02em;overflow-wrap:break-word}
+.swatch .count{font-size:14px;color:var(--mute);white-space:nowrap}
+.deck:hover .swatch{flex-grow:1}
+.deck .swatch:hover,.deck .swatch:focus-visible{flex-grow:2.2}
+.swatch:hover .chip img,.swatch:focus-visible .chip img{transform:none}
+.deck:hover .swatch:not(:hover) .chip img{filter:saturate(.55) brightness(1.04)}
+.swatch h3,.swatch .count{transition:color .3s}
+.swatch:hover h3,.swatch:focus-visible h3{color:var(--accent)}
+@media (max-width:760px),(hover:none){
+  .deck{display:grid;grid-template-columns:1fr 1fr;height:auto;gap:10px}
+  .swatch .chip{aspect-ratio:3/4;flex:none}
+  .swatch .chip img{transform:none}
+  .swatch .label{min-height:0;padding:12px 12px 14px;gap:2px}
+  .swatch .count{font-size:13px}
+  .deck:hover .swatch,.deck .swatch:hover{flex-grow:1}
+}
+.deck-foot{margin-top:24px}
+.deck-count{color:var(--mute);font-size:15px}
+
+/* koppen subpagina's */
+.head{padding-top:clamp(32px,6vw,80px)}
+.head h1{font-size:clamp(3rem,9vw,8.5rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.88}
+.head .intro{margin:clamp(20px,3vw,32px) 0 0;max-width:60ch;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65;color:var(--ink-2)}
+.crumbs{display:flex;flex-wrap:wrap;gap:8px;font-size:14px;color:var(--mute);margin:0 0 18px}
+.crumbs a{text-decoration:underline;text-underline-offset:.25em;text-decoration-color:var(--rule)}
+.crumbs a:hover{color:var(--accent)}
+.crumbs span[aria-hidden]{opacity:.5}
+
+/* filter als stalen */
+.filters{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:clamp(36px,5vw,56px) calc(var(--gl) * -1) 0;padding:2px var(--gl)}
+.filters::-webkit-scrollbar{display:none}
+.filters a,.filters button{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-size:15px;font-weight:500;color:var(--ink-2);cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s,color .2s}
+.filters a:hover,.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.filters [aria-pressed="true"]:hover,.filters [aria-current="page"]:hover{color:var(--paper)}
+.filters [aria-pressed="true"],.filters [aria-current="page"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.filters .n{font-size:13px;opacity:.55;font-variant-numeric:tabular-nums}
+
+/* projectindex */
+.index{list-style:none;margin:24px 0 0;padding:0;border-top:1px solid var(--ink)}
+.index li{border-bottom:1px solid var(--rule)}
+.index a{display:grid;grid-template-columns:clamp(96px,14vw,184px) minmax(0,1fr);gap:clamp(14px,2.4vw,32px);align-items:center;padding:clamp(12px,1.4vw,18px) 0}
+.index .th{border-radius:3px;overflow:hidden;aspect-ratio:4/3;background:var(--rule)}
+.index .th img{width:100%;height:100%;object-fit:cover;transition:transform .9s var(--ease)}
+.index .txt{display:grid;gap:6px;min-width:0}
+.index h3{font-size:clamp(1.2rem,2.6vw,2.2rem);font-weight:550;letter-spacing:-.025em;line-height:1.08;font-variation-settings:"wdth" 88;transition:transform .5s var(--ease),color .3s}
+.index .facts{display:flex;flex-wrap:wrap;gap:4px 18px;font-size:14.5px;color:var(--mute)}
+.index .facts span:first-child{display:inline-flex;align-items:center;gap:7px;color:var(--ink-2)}
+.index a:hover h3{transform:translateX(6px);color:var(--accent)}
+.index a:hover .th img{transform:scale(1.05)}
+@media (min-width:900px){
+  .index a{grid-template-columns:184px minmax(0,1fr) 190px 170px 56px}
+  .index .txt{display:contents}
+  .index .facts{display:contents}
+  .index .facts span{font-size:15px}
+  .index .facts span:last-child{text-align:right;font-variant-numeric:tabular-nums}
+}
+.back-row{margin-top:clamp(40px,5vw,64px)}
+
+/* categoriepagina: kleurband */
+.band{background:var(--c);color:var(--on,var(--ink))}
+.band .wrap{padding-top:clamp(32px,6vw,80px);padding-bottom:clamp(36px,5vw,64px)}
+.band .crumbs{color:inherit;opacity:.75}
+.band .crumbs a{text-decoration-color:currentColor}
+.band h1{font-size:clamp(3rem,9vw,8.5rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.88}
+.band .intro{margin:clamp(20px,3vw,32px) 0 0;max-width:60ch;font-size:clamp(1.05rem,1.4vw,1.2rem);line-height:1.65}
+.band .filters{margin-top:clamp(28px,4vw,44px)}
+.band .filters a{border-color:color-mix(in srgb,currentColor 35%,transparent);color:inherit}
+.band .filters [aria-current="page"]{background:var(--on,var(--ink));color:var(--c);border-color:transparent}
+.cat-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(32px,4vw,48px) clamp(14px,2vw,24px);margin-top:clamp(40px,5vw,64px)}
+@media (max-width:700px){.cat-list{grid-template-columns:1fr}}
+.cat-list.solo{grid-template-columns:1fr}
+.work{display:grid;gap:14px}
+.work .ph{border-radius:4px;overflow:hidden;aspect-ratio:3/2;background:var(--rule)}
+.work .ph img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.work:hover .ph img{transform:scale(1.035)}
+.work h2{transition:color .3s}
+.work:hover h2{color:var(--accent)}
+.work h2{font-size:clamp(1.4rem,2.6vw,2.2rem);font-weight:550;font-variation-settings:"wdth" 88;letter-spacing:-.025em}
+.work p{margin:4px 0 0;color:var(--mute);font-size:15px}
+
+/* projectpagina */
+.p-top{padding-top:clamp(24px,4vw,48px)}
+.p-top h1{font-size:clamp(2.6rem,7.4vw,7rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.9}
+.p-cover{margin:clamp(24px,3vw,40px) 0 0;max-height:88vh;aspect-ratio:16/9;overflow:hidden;background:var(--rule);cursor:zoom-in}
+.p-cover img{width:100%;height:100%;object-fit:cover}
+@media (max-width:640px){.p-cover{aspect-ratio:4/3}}
+.p-lead{margin:clamp(48px,7vw,96px) 0 0;max-width:30ch;font-size:clamp(1.5rem,3vw,2.5rem);line-height:1.15;letter-spacing:-.025em;font-weight:450}
+.p-section{margin-top:clamp(56px,8vw,112px)}
+.p-section > h2{font-size:clamp(1.8rem,4vw,3.4rem);font-weight:650;font-variation-settings:"wdth" 80,"opsz" 96;letter-spacing:-.03em;margin-bottom:clamp(20px,3vw,36px);padding-top:clamp(20px,2vw,28px);border-top:1px solid var(--ink)}
+.p-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (min-width:920px){.p-grid{grid-template-columns:minmax(0,1.5fr) minmax(280px,1fr)}}
+.p-text{margin:0;max-width:62ch;font-size:clamp(1.08rem,1.4vw,1.25rem);line-height:1.7;color:var(--ink-2)}
+.spec{margin:0;border-top:1px solid var(--ink)}
+.spec div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--rule);font-size:15px}
+.spec dt{color:var(--mute)}
+.spec dd{margin:0;font-weight:500}
+.tools{display:flex;flex-wrap:wrap;gap:6px 14px;list-style:none;margin:0;padding:0}
+.tools li{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
+.tools img{width:26px;height:26px;border-radius:50%}
+
+.gallery{display:grid;gap:clamp(6px,.8vw,12px);margin-top:clamp(40px,5vw,64px)}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:3px;background:var(--rule);cursor:zoom-in}
+.g-a{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:inherit}
+.g-a > img{aspect-ratio:1.5}
+.g-a .stack{display:grid;gap:inherit;grid-template-rows:1fr 1fr;min-height:0}
+.g-a .stack img{min-height:0}
+.g-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:inherit}
+.g-b img{aspect-ratio:1.3}
+.g-b img:last-child{aspect-ratio:auto}
+.g-full img{height:auto}
+@media (max-width:640px){
+  .g-a,.g-b{grid-template-columns:1fr}
+  .g-a .stack{grid-template-columns:1fr 1fr;grid-template-rows:auto}
+  .g-a .stack img{aspect-ratio:1.1}
+  .g-b img:last-child{aspect-ratio:1.3}
+}
+.docs-block{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:920px){.docs-block{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
+.docs-block h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;max-width:16ch}
+.docs{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.docs a{display:grid;grid-template-columns:minmax(0,1fr) auto auto;align-items:center;gap:16px;padding:13px 0;border-bottom:1px solid var(--rule);font-size:16px;font-weight:500}
+.docs .size{font-size:14px;color:var(--mute);font-weight:400;font-variant-numeric:tabular-nums;white-space:nowrap}
+.docs .open{font-size:14px;text-decoration:underline;text-underline-offset:.25em;text-decoration-color:var(--rule)}
+.docs a:hover .open{text-decoration-color:currentColor}
+.docs a{transition:color .2s,background .3s}
+.docs a:hover{color:var(--accent);background:linear-gradient(90deg,var(--accent-tint),transparent 75%)}
+
+.p-next{display:grid;grid-template-columns:minmax(0,1fr);gap:20px;margin-top:clamp(72px,10vw,140px);padding-top:20px;border-top:1px solid var(--ink)}
+.p-next .cap{font-size:15px;color:var(--mute);margin:0}
+.p-next a.next{display:grid;grid-template-columns:minmax(0,1fr) clamp(120px,24vw,320px);gap:clamp(16px,3vw,40px);align-items:end}
+.p-next a.next strong{font-size:clamp(2rem,6vw,5.2rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.9;transition:color .3s}
+.p-next a.next:hover strong{color:var(--accent)}
+.p-next a.next .ph{border-radius:3px;overflow:hidden;aspect-ratio:4/3;background:var(--rule)}
+.p-next a.next img{width:100%;height:100%;object-fit:cover}
+
+/* over */
+.about-top{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(28px,4vw,56px);padding-top:clamp(32px,6vw,80px)}
+.about-top h1{font-size:clamp(2.6rem,10.2vw,9.6rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.86;overflow-wrap:anywhere;hyphens:manual}
+.about-top .based{margin:12px 0 0;font-size:clamp(1.1rem,1.8vw,1.5rem);color:var(--ink-2)}
+.about-body{display:grid;grid-template-columns:minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:start}
+@media (min-width:880px){.about-body{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}}
+.portrait{margin:0;border-radius:4px;overflow:hidden;background:var(--rule);aspect-ratio:4/5;max-width:480px}
+.portrait img{width:100%;height:100%;object-fit:cover;object-position:top;filter:grayscale(1) contrast(1.04)}
+.bio p{margin:0;font-size:clamp(1.1rem,1.5vw,1.3rem);line-height:1.65;color:var(--ink-2);max-width:56ch}
+.bio p:first-child::first-line{color:var(--ink);font-weight:500}
+.traits{margin-top:clamp(32px,4vw,48px)}
+.traits h2,.skills h2{font-size:17px;font-weight:600;letter-spacing:0;margin-bottom:12px}
+.traits ul{list-style:none;margin:0;padding:0;columns:2;column-gap:24px;border-top:1px solid var(--ink)}
+.traits li{break-inside:avoid;padding:9px 0;border-bottom:1px solid var(--rule);font-size:16px}
+@media (max-width:420px){.traits ul{columns:1}}
+.moodboard{margin:clamp(64px,9vw,128px) 0 0;border-radius:4px;overflow:hidden;background:var(--rule)}
+.moodboard img{width:100%;aspect-ratio:2.2;object-fit:cover}
+@media (max-width:640px){.moodboard img{aspect-ratio:1.4}}
+.skills{margin-top:clamp(56px,7vw,96px);display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
+@media (min-width:880px){.skills{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr)}.skills h2{font-size:clamp(1.6rem,2.6vw,2.2rem);letter-spacing:-.025em}}
+.skill-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--ink)}
+@media (max-width:520px){.skill-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.skill-grid li{display:flex;align-items:center;gap:12px;padding:14px 8px 14px 0;border-bottom:1px solid var(--rule);font-size:15.5px;font-weight:500;line-height:1.25}
+.skill-grid img{width:36px;height:36px;border-radius:50%;flex:none}
+.hello{display:block;margin-top:clamp(80px,11vw,160px);font-size:clamp(2.6rem,9vw,8.4rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.035em;line-height:.88;transition:color .3s}
+.hello:hover{color:var(--accent)}
+.hello span{display:block;width:fit-content;border-bottom:.06em solid currentColor}
+
+/* contact */
+.contact-list{list-style:none;margin:clamp(40px,6vw,80px) 0 0;padding:0;border-top:1px solid var(--ink)}
+.contact-list li{display:grid;grid-template-columns:minmax(0,1fr);gap:4px 24px;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--rule);align-items:baseline}
+@media (min-width:760px){.contact-list li{grid-template-columns:10em minmax(0,1fr) auto}}
+.contact-list .lbl{font-size:15px;color:var(--mute)}
+.contact-list a.val{font-size:clamp(1.6rem,4vw,3.4rem);font-weight:550;font-variation-settings:"wdth" 85;letter-spacing:-.03em;line-height:1.1;overflow-wrap:anywhere;transition:color .2s}
+.contact-list a.val:hover{color:var(--accent)}
+.copy-btn{justify-self:start;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-size:14px;font-weight:500;cursor:pointer}
+.copy-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* footer: in Guusjes eigen kleur */
+.site-footer{margin-top:clamp(96px,12vw,170px);background:var(--accent);color:#fbefec;padding-bottom:max(18px,env(safe-area-inset-bottom,0px))}
+.site-footer .wrap{padding-top:clamp(44px,6vw,88px)}
+.site-footer ::selection{background:#fbefec;color:var(--accent)}
+.site-footer :focus-visible{outline-color:#fbefec}
+.foot-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 24px;align-items:start}
+@media (min-width:860px){.foot-grid{grid-template-columns:minmax(0,2.2fr) minmax(0,1fr) minmax(0,1fr)}}
+.foot-grid .claim{grid-column:1/-1;margin:0;font-size:clamp(2.4rem,5.4vw,4.75rem);font-weight:700;font-variation-settings:"wdth" 75,"opsz" 96;letter-spacing:-.03em;line-height:.92;max-width:17ch;color:#fff;text-wrap:balance}
+@media (min-width:860px){.foot-grid .claim{grid-column:auto}}
+.site-footer h2{font-size:14px;font-weight:500;letter-spacing:0;color:rgba(251,239,236,.62);margin:0 0 12px;padding-bottom:10px;border-bottom:1px solid rgba(251,239,236,.28)}
+.site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:16.5px}
+.site-footer ul a{overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.25em;transition:text-decoration-color .2s,color .2s}
+.site-footer ul a:hover{color:#fff;text-decoration-color:currentColor}
+.foot-bottom{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 20px;margin-top:clamp(56px,8vw,112px);padding-top:16px;border-top:1px solid rgba(251,239,236,.28);font-size:14px;color:rgba(251,239,236,.72)}
+@media (min-width:640px){.foot-bottom{grid-template-columns:auto 1fr auto}}
+.foot-logo{font-weight:650;font-size:18px;letter-spacing:-.02em;font-variation-settings:"wdth" 88;color:#fff}
+.foot-bottom .copy{grid-row:2;grid-column:1}
+@media (min-width:640px){.foot-bottom .copy{grid-row:auto;grid-column:auto}}
+.foot-bottom a.up{grid-row:1/3;grid-column:2;align-self:center;display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 16px;border-radius:999px;border:1px solid rgba(251,239,236,.4);color:#fff;transition:background .2s,color .2s}
+@media (min-width:640px){.foot-bottom a.up{grid-row:auto;grid-column:auto}}
+.foot-bottom a.up:hover{background:#fbefec;color:var(--accent)}
+.foot-bottom a.up svg{width:14px;height:14px}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:60;background:rgba(20,24,21,.96);display:grid;grid-template-rows:auto minmax(0,1fr);padding:max(14px,env(safe-area-inset-top,0px)) max(14px,env(safe-area-inset-right,0px)) max(14px,env(safe-area-inset-bottom,0px)) max(14px,env(safe-area-inset-left,0px));animation:in .25s ease both}
+.lb-bar{display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:14px;font-variant-numeric:tabular-nums;padding:0 4px 12px}
+.lb-stage{position:relative;display:grid;place-items:center;min-height:0}
+.lightbox img{max-height:100%;max-width:100%;object-fit:contain;border-radius:3px}
+.lb-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:0;background:rgba(60,66,62,.7);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:#fff;cursor:pointer;transition:background .2s}
+.lb-btn:hover{background:rgba(90,96,92,.85)}
+.lb-btn svg{width:20px;height:20px}
+.lb-stage .lb-btn{position:absolute;top:50%;transform:translateY(-50%)}
+.lb-stage .prev{left:4px}
+.lb-stage .next{right:4px}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);z-index:70;background:var(--accent);color:var(--paper);font-size:15px;font-weight:500;padding:10px 18px;border-radius:999px;animation:in .2s ease both}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="header">
+  <div class="wrap">
+    <a class="logo" data-route="home" href="#home"><span>Guusje</span> <span>Rozendom</span></a>
+    <div class="head-right">
+      <nav class="nav" data-i18n-label="mainMenu" aria-label="Hoofdmenu">
+        <a data-route="projects" data-nav="projects" data-i18n="projects" href="#projects">Projecten</a>
+        <a data-route="about" data-nav="about" data-i18n="about" href="#about">Over</a>
+        <a data-route="contact" data-nav="contact" data-i18n="contact" href="#contact">Contact</a>
+      </nav>
+      <div class="lang" role="group" aria-label="Taal / Language">
+        <a id="lang-nl" href="#home" hreflang="nl" lang="nl">NL</a>
+        <a id="lang-en" href="#en/home" hreflang="en" lang="en">EN</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main id="app"></main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <p class="claim" data-i18n="claim">Interieur ontwerp, 3D-visuals en concept ontwerp.</p>
+      <div>
+        <h2 data-i18n="menu">Menu</h2>
+        <ul>
+          <li><a data-route="home" data-i18n="portfolio" href="#home">Portfolio</a></li>
+          <li><a data-route="projects" data-i18n="projects" href="#projects">Projecten</a></li>
+          <li><a data-route="about" data-i18n="about" href="#about">Over</a></li>
+          <li><a data-route="contact" data-i18n="contact" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 data-i18n="contact">Contact</h2>
+        <ul>
+          <li><a href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">LinkedIn</a></li>
+          <li><a href="tel:+31632275342">+31 6 32275342</a></li>
+          <li><a href="mailto:guusje@gmail.com">guusje@gmail.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <a class="foot-logo" data-route="home" href="#home">Guusje Rozendom</a>
+      <span class="copy">© <span id="year">2025</span> Guusje Rozendom</span>
+      <a class="up" href="#top" data-top><span data-i18n="top">Terug naar boven</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Afbeelding" hidden>
+  <div class="lb-bar">
+    <span id="lb-count">1 / 1</span>
+    <button type="button" class="lb-btn" id="lb-close" data-i18n-label="close" aria-label="Sluiten"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </div>
+  <div class="lb-stage">
+    <img id="lb-img" alt="">
+    <button type="button" class="lb-btn prev" id="lb-prev" data-i18n-label="prev" aria-label="Vorige"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+    <button type="button" class="lb-btn next" id="lb-next" data-i18n-label="nextImg" aria-label="Volgende"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  </div>
+</div>
+
+<script>
+/* ---------- Afbeeldingen & documenten ----------
+   Alles staat lokaal: foto's in images/ (1400px) en images/large/ (2400px),
+   software-iconen in images/icons/, PDF's in docs/. */
+const hash = id => id.split("~")[0];
+const ICON_IDS = new Set();
+const img = (id, w = 1400) =>
+  ICON_IDS.has(id) ? `images/icons/${hash(id)}.png`
+  : w > 1400 ? `images/large/${hash(id)}.jpg`
+  : `images/${hash(id)}.jpg`;
+const PDF = id => `docs/${id}.pdf`;
+
+const SOFTWARE = {
+  sketchup:   ["SketchUp", "b32635c07d7a4c2b983cf7b59df21837~mv2.png"],
+  vectorworks:["Vectorworks (2D)", "c9ef89b4b3ab4cf898a1c49832da2d54~mv2.png"],
+  pcon:       ["pCon Planner", "1713d5e57ccf402aa2d50c7fc9bc4511~mv2.png"],
+  enscape:    ["Enscape", "b9fa0c4072f44f988d8347f434b51890~mv2.png"],
+  twinmotion: ["Twinmotion", "5c2f72d05f604c16b08f5bc8009305ca~mv2.png"],
+  indesign:   ["Adobe InDesign", "364970c110ed4c45a21c7c9684c66a86~mv2.png"],
+  photoshop:  ["Adobe Photoshop", "08e9ec63bca54541b8de44bc0246721f~mv2.png"],
+  office:     ["Ms Office", "8723f3d8e3e448e799e8148221fac1d0~mv2.png"],
+  canva:      ["Canva", "fc22d220b07e4296803b665482cc85dc~mv2.png"]
+};
+
+Object.values(SOFTWARE).forEach(([, id]) => ICON_IDS.add(id));
+
+const CATEGORIES = {
+  office: {
+    title: "Kantoor", tile: "Kantoor projecten", cover: "559dd3e66a2743548ca09462a4df35b7~mv2.jpg",
+    intro: "Door kantooromgevingen te ontwerpen, kan ik functionaliteit, welzijn en identiteit combineren. Ik creëer graag flexibele werkplekken die verschillende activiteiten ondersteunen – van geconcentreerd werken tot samenwerking en die tegelijkertijd elementen van psychologie, branding en sfeer integreren. Het resultaat is een omgeving die er niet alleen inspirerend uitziet, maar ook de productiviteit en verbinding versterkt.",
+    projects: ["warehouse", "newminds-offices", "stepshop"]
+  },
+  "healthcare-projects": {
+    title: "Gezondheidszorgprojecten", tile: "Gezondheidszorg projecten", cover: "f9462600ebe5411d9af5e94b006ff561~mv2.png",
+    intro: "Zorgomgevingen vereisen meer dan alleen functionaliteit. Een doordacht ontwerp kan welzijn en herstel ondersteunen en tegelijkertijd strenge eisen combineren met warmte en inspiratie. Zo ontstaan ruimtes die patiënten, bezoekers en personeel van dienst zijn.",
+    projects: ["hospital"]
+  },
+  hospitality: {
+    title: "Hospitality", tile: "Hospitality projecten", cover: "35d09b4c03a6476185f15d27c5c6ed56~mv2.png",
+    intro: "Hospitality ontwerp fascineert me omdat het verder gaat dan functionaliteit: het creëert ervaringen. Deze ruimtes nodigen mensen uit om contact te maken, te ontspannen, te studeren of gewoon te genieten van hun omgeving. Ik word geïnspireerd door de manier waarop sfeer, kleur en vorm stemming en gedrag kunnen beïnvloeden, waardoor een café, bibliotheek of lounge meer wordt dan alleen een plek om te verblijven. Door sociale waarde en welzijn in het ontwerp te verweven, streef ik ernaar omgevingen te creëren die persoonlijk, gastvrij en onvergetelijk aanvoelen.",
+    projects: ["library", "project-thailand"]
+  },
+  residential: {
+    title: "Residentieel", tile: "Residentiële projecten", cover: "be9c22f3443a4d8497e6f09f2c0b5ea8~mv2.png",
+    intro: "Bij residentieel ontwerp is goed luisteren naar de klant essentieel. Door hun levensstijl, wensen en onuitgesproken behoeften te begrijpen, creëer ik interieurs die persoonlijk en authentiek aanvoelen. Mijn focus ligt op het combineren van functionaliteit met sfeer, wat resulteert in woningen die zowel comfort als identiteit bieden.",
+    projects: ["kitchens", "minimal-design"]
+  }
+};
+const HOME_ORDER = ["office", "healthcare-projects", "hospitality", "residential"];
+const CAT_LABEL = { office: "Kantoor", "healthcare-projects": "Gezondheidszorg", hospitality: "Hospitality", residential: "Residentieel" };
+
+const PROJECTS = {
+  hospital: {
+    cat: "healthcare-projects", card: "Afstudeerproject - Ziekenhuis", title: "Afstudeerproject<br>Ziekenhuis",
+    cover: "f9462600ebe5411d9af5e94b006ff561~mv2.png",
+    sections: [{
+      text: "Voor mijn afstudeerproject ontwierp ik een helende omgeving voor een Nederlands ziekenhuis. Door onderzoek gedreven te ontwerpen integreerde ik de natuur in de entree, de centrale hal en het polikliniekplein, met als doel het welzijn van patiënten, bezoekers en personeel te verbeteren. Geïnspireerd door de positieve effecten van Nederlandse parken, brengt het concept de natuur terug in het ziekenhuisinterieur, wat zorgt voor vertrouwdheid, comfort en rust.",
+      gallery: ["8a52acaf3d27470fb5854f9aab4218d9~mv2.png","254c6e2352e44422b137b20bc918f239~mv2.jpg","207388011b6d431a9ac765984f428936~mv2.png","a5de393f69984ebe801ded9c0d69280d~mv2.jpg","51a8763e3b6f469a8cec59e5759abb18~mv2.png","3a355c257c744751b7083d19ae21b080~mv2.png","0c451c1de5d343eb921deb5ddc549f4a~mv2.png","4dfdf13a783d4856a9eae94a9d546a67~mv2.png","1282ab432f9240d8a968df8e314e214f~mv2.jpg","eb6eecdabfe645c49e3fcc11d4411485~mv2.jpg","ed189151b2b242c2bc41a2a101bb3577~mv2.jpg","db341214c2c54e2a9bb62ef7e517ce2d~mv2.jpg","c8a59d4a45a74d5586c35f6550c9cbe9~mv2.jpg","87f8f466e53c493eb373a44eef48c634~mv2.jpg","7b6746a34f754fd19804139b5870ae29~mv2.jpg","b5b04973a17f4413ad85c5223a3c5348~mv2.jpg","6a6ad4977b884ed5b035aa4ac4a07176~mv2.jpg"],
+      docs: [["Bestektekening","8ae4c43220e64878945f94f36c8f12bb"],["Lichtplan","7bb44357b6274a2d98700adddc19e30d"],["Maatwerk bank tekening 1","645b83398ff54a9b937a893a402c7808"],["Maatwerk bank tekening 2","57f7fd5ddf114bb5a11507e5fb5a7e19"],["Ontwerpdossier","0b080edaf8404fab9f7e9ce76f033c44"]],
+      meta: [["Locatie","Nederland"],["Jaar","2025"],["Omvang","Entree, Centrale Hal, Polikliniekplein"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 4 - afstuderen)"]],
+      software: ["sketchup","vectorworks","enscape","indesign","photoshop"]
+    }]
+  },
+  "newminds-offices": {
+    cat: "office", card: "Newminds Office's", title: "Newminds kantoren",
+    cover: "156acc981fff4cbd9e57f8825455dd5f~mv2.png",
+    lead: "Voor Newminds heb ik twee kantoorontwerpen ontworpen waarin functionaliteit, identiteit en welzijn samenkomen. Het kantoor in Hengelo richtte zich op de transformatie van een casco tot een inspirerende werkplek, terwijl het project in Zwolle de identiteit van het SPATIO-team direct vertaalde naar hun omgeving.",
+    sections: [{
+      sub: "Newminds kantoor Hengelo",
+      text: "In Hengelo heb ik een functioneel en dynamisch kantoor ontworpen door bestaand meubilair te hergebruiken en te bouwen op antraciete tapijttegels die er al als basis lagen. Door gevarieerde vloerpatronen, kleurzonering en de integratie van mos- en plantenwanden combineert de werkruimte helderheid en groen, terwijl het tegelijkertijd de branding van het bedrijf subtiel versterkt.",
+      gallery: ["0d269a2c4d26484d82f20cee6889ad91~mv2.jpg","053cf34d1e7a4e8996f5cddcbcb7ef1f~mv2.jpg","32b320340b524ddc9961054169608dbb~mv2.jpg","bb436ebb83fd4c86b1f63a785f3eb3d1~mv2.png","c9c840506bc1478e821bfac56d358075~mv2.png","8694ee26f4d44e9d9dcbc1a3989cc061~mv2.jpg","2fc2ab419e3a414183958d262a54a299~mv2.jpg","708230c995884433864b8992e8e8697c~mv2.jpg"],
+      meta: [["Locatie","Hengelo, Nederland"],["Jaar","2023"],["Omvang","Kantoor"],["Ontwerper","Guusje Rozendom"],["Cliënt","Newminds (Axelio)"]],
+      software: ["sketchup","enscape","office"]
+    },{
+      sub: "SPATIO Newminds kantoor Zwolle",
+      text: "Voor het SPATIO-team in Zwolle heb ik identiteit en teamspirit benadrukt door logokleuren, moselementen en huisstijlafwerkingen te integreren. Natuurelementen en akoestische oplossingen bevorderen het welzijn en de concentratie, terwijl stijlelementen zoals sfeerverlichting een warme, uitnodigende sfeer creëren.",
+      gallery: ["4d03b106bfe646df90e1884c236fe857~mv2.png","22bbc89226f04ad3873ac2020b0c30b9~mv2.jpg","5cb1622498bb4f728c6150fedaa48593~mv2.jpg","077738d9d2eb485dbadd609701f34c14~mv2.jpg"],
+      meta: [["Locatie","Zwolle, Nederland"],["Jaar","2025"],["Omvang","Kantoor"],["Ontwerper","Guusje Rozendom"],["Cliënt","SPATIO Newminds (Axelio)"]],
+      software: ["sketchup","twinmotion","office"]
+    }]
+  },
+  warehouse: {
+    cat: "office", card: "Herbestemmingsopdracht - Het Pakhuis", title: "Herbestemmingsopdracht<br>Het Pakhuis",
+    cover: "559dd3e66a2743548ca09462a4df35b7~mv2.jpg",
+    sections: [{
+      text: "Voor de herontwikkeling van de voormalige goederenloods in Goor (NL) ontwierp ik een flexibel werkplekconcept met verhuurbare kantoren, belcellen en een café. Het ontwerp integreert kleurenpsychologie, natuurlijke materialen en akoestische oplossingen ter ondersteuning van focus, motivatie en welzijn. Een nieuwe gevel met grote ramen brengt daglicht tot diep in het gebouw en transformeert de gesloten schil tot een open en inspirerende werkomgeving.",
+      gallery: ["2129af292b394ff3928bfd33e4d480ca~mv2.png","c887bdac6d7842b1be271d9de9cb841c~mv2.png","96af6e37ff11425295158633ecc4fe8d~mv2.png","013d0448f4344b9e9de536f66c1d6e92~mv2.png","5d8e6864e24f4b8188ad93fd1ee31d0e~mv2.png","9f4824160a9c4a76b25865d9fdc7b435~mv2.png","eda643348c3448b8873d03c7ff00efc4~mv2.png","559dd3e66a2743548ca09462a4df35b7~mv2.jpg","191c96e95d0f466abe1e686de0814aac~mv2.png","a32b51ef6a2e4bd8af3fef3ae3f54dc6~mv2.png","e80993e35801465eb95d0d1dbd61ad48~mv2.png","30274840b2a54a39bf8cd5db4dfac274~mv2.png"],
+      docs: [["Bestektekening","8ae4c43220e64878945f94f36c8f12bb"],["Lichtplan","7bb44357b6274a2d98700adddc19e30d"]],
+      meta: [["Locatie","Goor, Nederland"],["Jaar","2023"],["Omvang","Volledig Casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
+      software: ["sketchup","vectorworks","enscape","indesign","photoshop"]
+    }]
+  },
+  stepshop: {
+    cat: "office", card: "Stepshop-kantoor", title: "Stepshop", tile: "Stepshop kantoor",
+    cover: "bb10c59df1534756bc3dbc2d27d659fc~mv2.jpg",
+    sections: [{
+      text: "Stepshop is een step-winkel die voornamelijk online opereert en waarvan het kantoor zich in het magazijn bevindt. In dit kantoorproject van 34 m² was het doel om wonen en werken in één ruimte te combineren. Wat voorheen een formeel kantoor was, moest worden omgetoverd tot een warme, huiselijke omgeving met ruimte voor zowel werk als ontspanning. Het ontwerp bracht het aantal werkplekken terug van vier naar twee, introduceerde comfortabele zitmogelijkheden en persoonlijke accenten, en verkende diverse indelingsmogelijkheden om een gastvrije, veelzijdige sfeer te creëren, met ronde elementen als subtiele verwijzing naar de wielen van een step.",
+      gallery: ["e06a85692f794414a50ada59021bb566~mv2.png","23a3027188f04977b0d1345622b62880~mv2.png","97399ff8042a4f379511fcdcaebdd34d~mv2.png","61af3b5e3b4647ffb371ae838f48edeb~mv2.png"],
+      meta: [["Locatie","Hengelo, Nederland"],["Jaar","2023"],["Omvang","Kantoor"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
+      software: ["sketchup","vectorworks","enscape"]
+    }]
+  },
+  "project-thailand": {
+    cat: "hospitality", card: "Project Thailand", title: "Project Thailand",
+    cover: "bf2c08f4097c417aa1422278a94fc17a~mv2.jpg",
+    sections: [{
+      text: "Dit teamproject in Thailand richtte zich op het ontwerpen van tiny houses, een multifunctionele hal en een café binnen strikte budget- en materiaalbeperkingen. Met behulp van eenvoudige materialen zoals pallets, golfplaten en tweedehands ramen creëerden we goedkope, bouwbare ontwerpen die geschikt waren voor het tropische klimaat. Mijn bijdrage bestond uit schetsen voor de tiny houses, het café en de multifunctionele hal, met oplossingen zoals verhoogde structuren, schuine daken voor hevige regenval en natuurlijke ventilatie.",
+      gallery: ["bf2c08f4097c417aa1422278a94fc17a~mv2.jpg","cd37431a5ba94044aa6cfac4989b2f41~mv2.jpg","8dafa16f570e45a0ba8e07b3566973f2~mv2.png","0c5d03b1c22a4a208e0e649e8dc28e34~mv2.png","01c88a80867c428598cc48fd85cfe8ac~mv2.png"],
+      meta: [["Locatie","Thailand"],["Jaar","2023"],["Omvang","Multifunctionele zaal, café, tiny house"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
+      software: ["sketchup","enscape"]
+    }]
+  },
+  library: {
+    cat: "hospitality", card: "Bibliotheek & Café", title: "Bibliotheek en café",
+    cover: "35d09b4c03a6476185f15d27c5c6ed56~mv2.png",
+    sections: [{
+      text: "Bibliotheek de Golf was mijn eerste interieurontwerpproject. Het combineerde een openbare bibliotheek met een grand café en extra studieplekken voor middelbare scholieren. Gelegen in de Rotterdamse wijk Feijenoord, speelt het ontwerp in op de lokale context door jongeren een gratis plek te bieden om te studeren, samen te werken en elkaar te ontmoeten. Het interieur is verdeeld in gastvrije zones voor sociale interactie, computergebruik en geconcentreerd studeren, waarbij kleurenpsychologie de sfeer en het gedrag bepaalt. Een vloeiende, golfachtige vorm verbindt de ruimtes, terwijl warme zalmtinten en dieppaars zowel energie als concentratie creëren. Het resultaat is een bibliotheek die open, uitnodigend en inspirerend aanvoelt voor haar diverse gemeenschap.",
+      gallery: ["35d09b4c03a6476185f15d27c5c6ed56~mv2.png","0856c0d074ef4e6696baefcf10f06744~mv2.png","72d11d72d71e45e4a7358472a2b8efb7~mv2.png","20c30f89db294041bc4c90982f73a732~mv2.png","a4d289343c3346d4b5d4dbcdeabe1a80~mv2.png","01ed965d99ee4a219d031d8fcc61e439~mv2.png","358b6aa172054e3a83ddafad9d397d34~mv2.png","188b80600d464357a3904de65edd9876~mv2.png","197ae0a7be4f46f2b2889faa620e78c3~mv2.png"],
+      docs: [["Ontwerpdossier","0285a27fca5f461bbe5d91a67d2b27be"]],
+      meta: [["Locatie","Rotterdam, Nederland"],["Jaar","2022"],["Omvang","Volledig Casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 2)"]],
+      software: ["sketchup","vectorworks","twinmotion"]
+    }]
+  },
+  "minimal-design": {
+    cat: "residential", card: "Minimal Design", title: "Minimalistisch ontwerp",
+    cover: "bd50464eec384352a06fd9cdc616db0f~mv2.png",
+    sections: [{
+      text: "Voor dit project ontwierp ik een appartement van 28 m² voor young professionals, met de focus op duurzame en flexibele woonoplossingen. Multifunctioneel, op maat gemaakt meubilair en aanpasbare indelingen maken de kleine ruimte geschikt voor wonen, werken, slapen en eten zonder kwaliteit of comfort te verliezen. Door visuele ruis te minimaliseren en natuurlijke, biobased materialen in aardse tinten te gebruiken, creëert het ontwerp een rustige en tijdloze sfeer, terwijl elke vierkante meter optimaal wordt benut.",
+      gallery: ["bd50464eec384352a06fd9cdc616db0f~mv2.png","62ce4809cca04118aecf62699631e23c~mv2.png","1ad721288c2346abb9281b5df8071127~mv2.png","73532b21e7694fba9c59d784d8066d55~mv2.png","0d0c8c7dc2bd49bb938418ad1aab25e9~mv2.png","69a3755bd31f447c9a37c0ce16306484~mv2.png","37f2b49c63f841309716d88bdc900bb8~mv2.png","ba9e0b2fa3ef4c4c8cc5dd48269a8c0c~mv2.png","5eb61705d4f8482ea7c1795718bc55fe~mv2.png","acf5bd31ee5048b397aeb8fb44f30b74~mv2.png","2ed291d82f3147758203e58b8f13cae8~mv2.png","e3753e5ad43d4ca8990a11e902d5aa45~mv2.png","b22ecc89abe343848661af0f9d25cc0b~mv2.png"],
+      docs: [["Bestektekening","a980e301c6274da99f70b97d0bcb2211"],["Lichtplan","c76addd7375b43b69ccbe07560f6b2ab"],["Maatwerktekening ORI Cloudbed","c4852bdee5c048b4b5ce2c278a73b8cf"],["Maatwerktekening wandkast","9917a984d28b41ee921b54d930c41c32"],["Maatwerktekening verschuifbare kast","904cbd4db54e426692b0b2b95af74d95"],["Maatwerktekening onderstel verschuifbare kast ORI","0e8a30a7601d45adb2291228a6295320"],["Maatwerktekening doorsnede verschuifbare kast","7ad91f45c7fb478691f1d9762eef3ed9"],["Maatwerktekening detail uitklapbaar bureau 1","897279d8eff94f4b871b5860528e8e83"],["Maatwerktekening detail uitklapbaar bureau 2","842305f0fc2d4187ac811613a7638520"],["Ontwerpdossier","91c580f331904e939339211d963a4105"]],
+      meta: [["Locatie","Amsterdam, Nederland"],["Jaar","2023"],["Omvang","Appartement 28m2"],["Ontwerper","Guusje Rozendom"],["Cliënt","Minimal Design Eco, Academisch project"]],
+      software: ["sketchup","vectorworks","enscape"]
+    }]
+  },
+  kitchens: {
+    cat: "residential", card: "Keukenontwerp", title: "Keukens",
+    cover: "be9c22f3443a4d8497e6f09f2c0b5ea8~mv2.png",
+    sections: [{
+      text: "Dit ontwerp is geïnspireerd op de Japandi-stijl – een mix van Japans minimalisme en Scandinavische warmte. Met strakke lijnen, natuurlijke materialen en neutrale tinten creëert het een tijdloze, serene en harmonieuze omgeving.",
+      gallery: ["be9c22f3443a4d8497e6f09f2c0b5ea8~mv2.png","cd5f47d8d312429f9e86356f2da61c28~mv2.jpg","402be349c5164f1d81a18934d330c701~mv2.jpg","d7711a348d904da1a9424c189abda76d~mv2.png","cebe9e28277e49d5b67c5884e20a0b47~mv2.png"],
+      meta: [["Locatie","Hengelo, Nederland"],["Jaar","2025"],["Domein","Keuken en eetkamer"],["Ontwerper","Guusje Rozendom"],["Cliënt","Familie in Hengelo"]],
+      software: ["sketchup","vectorworks","enscape"]
+    }]
+  }
+};
+const OVERVIEW_ORDER = ["hospital","newminds-offices","warehouse","stepshop","project-thailand","library","minimal-design","kitchens"];
+
+
+/* ---------- Engels (teksten van de Engelse Wix-versie) ---------- */
+const EN_CAT = {
+  office: { title: "Office", tile: "Office projects",
+    intro: "Designing office environments allows me to combine functionality, well-being, and identity. I enjoy creating flexible workspaces that support different activities—from focused work to collaboration—while integrating elements of psychology, branding, and atmosphere. The result is an environment that not only looks inspiring, but also strengthens productivity and connection." },
+  "healthcare-projects": { title: "Healthcare projects", tile: "Healthcare projects",
+    intro: "Healthcare environments require more than functionality. Thoughtful design can support well-being and recovery, while balancing strict requirements with warmth and inspiration to create spaces that serve patients, visitors, and staff." },
+  hospitality: { title: "Hospitality", tile: "Hospitality projects",
+    intro: "Hospitality design fascinates me because it goes beyond functionality, it creates experiences. These spaces invite people to connect, relax, study, or simply enjoy their surroundings. I am inspired by the way atmosphere, color, and form can influence mood and behavior, transforming a café, library, or lounge into more than just a place to be. By weaving social value and well-being into the design, I aim to create environments that feel personal, welcoming, and memorable." },
+  residential: { title: "Residential", tile: "Residential projects",
+    intro: "In residential design, listening closely to the client is key. By understanding their lifestyle, wishes, and unspoken needs, I create interiors that feel personal and authentic. My focus is on combining functionality with atmosphere, resulting in homes that offer both comfort and identity." }
+};
+const EN_PROJ = {
+  hospital: { card: "Graduation Project - Hospital", title: "Graduation project<br>Hospital", tile: "Graduation project Hospital", sections: [{
+    text: "For my graduation project, I designed a healing environment for a Dutch Hospital. Through research-driven design, I integrated nature into the entrance, central hall, and outpatient plaza, aiming to enhance the well-being of patients, visitors, and staff. Inspired by the positive effects of Dutch parks, the concept brings nature back into the hospital interior, creating familiarity, comfort, and tranquility.",
+    docs: ["Technical drawing","Illumination plan","Custom design drawing 1","Custom design drawing 2","Design documentation (NL)"],
+    meta: ["The Netherlands","2025","Entrance, Central Hall, Outpatient Plaza","Guusje Rozendom","Academic project (Year 4 - Graduation)"] }] },
+  "newminds-offices": { card: "Newminds Office's", title: "Newminds Office's",
+    lead: "For Newminds, I created two office designs that balance functionality, identity, and well-being. The Hengelo office focused on transforming a shell into an inspiring workplace, while the Zwolle project translated the SPATIO team’s identity directly into their environment.",
+    sections: [{
+      sub: "Newminds Office Hengelo",
+      text: "In Hengelo, I designed a functional and dynamic office by reusing existing furniture and building upon anthracite carpet tiles as a base. Through varied floor patterns, color zoning, and the integration of moss and plant walls, the workspace combines clarity and greenery while subtly reinforcing the company’s branding.",
+      meta: ["Hengelo, The Netherlands","2023","Office's","Guusje Rozendom","Newminds (Axelio)"] }, {
+      sub: "SPATIO Newminds Office Zwolle",
+      text: "For the SPATIO team in Zwolle, I emphasized identity and team spirit by incorporating logo colors, moss elements, and branded finishes. Natural greenery and acoustic solutions improve well-being and concentration, while styling elements such as atmospheric lighting create a warm, inviting atmosphere.",
+      meta: ["Zwolle, The Netherlands","2025","Office","Guusje Rozendom","SPATIO Newminds (Axelio)"] }] },
+  warehouse: { card: "Adaptive reuse - The Warehouse", title: "Adaptive reuse assignment<br>The Warehouse", tile: "Adaptive reuse assignment The Warehouse", sections: [{
+    text: "For the redevelopment of the former goods warehouse in Goor (NL), I designed a flexible workspace concept with rentable offices, phone booths, and a café. The design integrates color psychology, natural materials, and acoustic solutions to support focus, motivation, and well-being. A new façade with large windows brings daylight deep into the building, transforming the closed shell into an open and inspiring work environment.",
+    docs: ["Technical drawing","Illumination plan"],
+    meta: ["Goor, The Netherlands","2023","Whole Shell building","Guusje Rozendom","Academic project (Year 3)"] }] },
+  stepshop: { card: "Stepshop Office", title: "Stepshop", tile: "Stepshop Office", sections: [{
+    text: "Stepshop is a scooter store that primarily operates online, with its office located in the warehouse. In this 34 m² office project, the goal was to combine living and working in one space. What was previously a formal office needed to be transformed into a warm, homelike environment with room for both work and relaxation. The design reduced the number of workstations from four to two, introduced comfortable seating and personal touches, and explored multiple layout options to create a welcoming, versatile atmosphere, incorporating round elements as a subtle reference to the wheels of a scooter.",
+    meta: ["Hengelo, The Netherlands","2023","Office","Guusje Rozendom","Academic project (Year 3)"] }] },
+  "project-thailand": { card: "Project Thailand", title: "Project Thailand", sections: [{
+    text: "This team project in Thailand focused on designing tiny houses, a multifunctional hall, and a café under strict budget and material limitations. Using simple resources such as pallets, corrugated sheets, and second-hand windows, we created low-cost, buildable designs adapted to the tropical climate. My contribution included sketches for the tiny houses, the café, and the multifunctional hall, incorporating solutions such as elevated structures, sloped roofs for heavy rainfall, and natural ventilation.",
+    meta: ["Thailand","2023","Multifunctional Hall, Café, Tiny House","Guusje Rozendom","Academic project (Year 3)"] }] },
+  library: { card: "Library & Cafe", title: "Library and Café", sections: [{
+    text: "Library the Wave was my first interior design project, combining a public library with a grand café and additional study spaces for high school students. Located in Rotterdam’s Feijenoord district, the design responds to the local context by offering young people a free place to study, collaborate, and meet. The interior is divided into welcoming zones for social interaction, computer use, and focused study, with color psychology guiding atmosphere and behavior. A flowing wave-like form connects the spaces, while warm salmon tones and deep purple create both energy and concentration. The result is a library that feels open, inviting, and inspiring for its diverse community.",
+    docs: ["Design documentation (NL)"],
+    meta: ["Rotterdam, The Netherlands","2022","Whole Shell building","Guusje Rozendom","Academic project (Year 2)"] }] },
+  "minimal-design": { card: "Minimal Design", title: "Minimal Design", sections: [{
+    text: "For this project, I designed a 28 m² apartment for young professionals, focusing on sustainable and flexible living solutions. Multifunctional, custom-made furniture and adaptable layouts allow the small space to accommodate living, working, sleeping, and dining without losing quality or comfort. By minimizing visual noise and using natural, biobased materials in earthy tones, the design creates a calm and timeless atmosphere while making optimal use of every square meter.",
+    docs: ["Technical drawing","Illumination plan","Custom design drawing ORI Cloudbed","Custom design drawing built-in cabinet","Custom design drawing mobile cabinet","Custom design drawing mobile cabinet sliding mechanism ORI","Custom design drawing mobile cabinet cross-section","Custom design fold-out desk detail drawing 1","Custom design fold-out desk detail drawing 2","Design documentation (NL)"],
+    meta: ["Amsterdam, The Netherlands","2023","Apartment 28m2","Guusje Rozendom","Minimal Design Eco, academic project"] }] },
+  kitchens: { card: "Kitchen Design", title: "Kitchens", sections: [{
+    text: "This design is inspired by the Japandi style – a blend of Japanese minimalism and Scandinavian warmth. With clean lines, natural materials, and neutral tones, it creates a timeless, serene, and harmonious environment.",
+    meta: ["Hengelo, The Netherlands","2025","Kitchen & Dining area","Guusje Rozendom","Family in Hengelo"] }] }
+};
+const META_EN = { Locatie: "Location", Jaar: "Year", Omvang: "Scope", Domein: "Scope", Ontwerper: "Designer", "Cliënt": "Client" };
+
+const UI = {
+  nl: {
+    locale: "nl-NL", home: "Guusje Rozendom · Portfolio", mainMenu: "Hoofdmenu",
+    projects: "Projecten", about: "Over", contact: "Contact", portfolio: "Portfolio", menu: "Menu", top: "Terug naar boven",
+    claim: "Interieur ontwerp, 3D-visuals en concept ontwerp.",
+    services: ["Interieur ontwerp", "3D-visuals", "Concept ontwerp"],
+    statement: "Een ruimte moet niet alleen functioneel en esthetisch aantrekkelijk zijn, maar ook impactvol, inspirerend en mensgericht.",
+    allProjects: "Alle projecten", pictured: "Op de foto:", byCat: "Projecten per categorie",
+    count: n => `${n} ${n === 1 ? "project" : "projecten"}`,
+    projIntro: "Op deze pagina vindt u een verzameling van mijn ontwerpprojecten, die mijn passie voor gebruikersgerichte interieurontwerpen en het creëren van inspirerende, functionele ruimtes laten zien. Elk project weerspiegelt mijn focus op het verbeteren van de beleving van de gebruikers.",
+    all: "Alle", backHome: "Terug naar Homepage", crumbs: "Kruimelpad", filter: "Filter op categorie", cats: "Categorieën",
+    catLabel: CAT_LABEL,
+    software: "Software gebruikt in dit project", pack: "Bekijk het ontwerp en technische pakket", open: "Openen", next: "Volgend project",
+    backTo: { office: "Terug naar Kantoorprojecten", "healthcare-projects": "Terug naar Gezondheidszorgprojecten", hospitality: "Terug naar Hospitalityprojecten", residential: "Terug naar Residentiële projecten" },
+    designer: "Interieur&shy;ontwerper", based: "gevestigd in Nederland",
+    bio: "Ik ben Guusje Rozendom, een interieurontwerper met een BA (Saxion Hogeschool, Deventer). Mijn passie ligt bij mensgericht ontwerpen, met een focus op gedeelde ruimtes zoals kantoren, winkels en de gezondheidszorg. Gefascineerd door de psychologie van interieurs, creëer ik ontwerpen die niet alleen esthetisch aantrekkelijk zijn, maar ook functioneel, inspirerend en welzijnsbevorderend. Door goed naar klanten te luisteren en inzichten te vertalen naar heldere concepten, streef ik ernaar interieurs te ontwikkelen die hun gebruikers echt dienen.",
+    traitsH: "Eigenschappen die mij kenmerken:",
+    traits: ["Creatief","Betrokken","Servicegericht","Empathisch","Doelgericht","Goed in conceptueel denken","Nauwkeurig"],
+    skills: "Softwarevaardigheid", hello: "Laten we kennismaken!", helloBr: "Laten we<br>kennismaken!",
+    phone: "Telefoon:", linkedin: "LinkedIn", mail: "Mail:", copy: "Kopieer adres", copied: "Adres gekopieerd",
+    altPakhuis: "Render van rode telefooncellen in Het Pakhuis", altPortrait: "Portret van Guusje Rozendom", altMood: "Moodboard met materiaalstalen, tablet en koffie",
+    close: "Sluiten", prev: "Vorige", nextImg: "Volgende", image: "Afbeelding"
+  },
+  en: {
+    locale: "en-GB", home: "Guusje Rozendom · Portfolio", mainMenu: "Main menu",
+    projects: "Projects", about: "About", contact: "Contact", portfolio: "Portfolio", menu: "Menu", top: "Back to top",
+    claim: "Interior design, 3D-visuals and concept design.",
+    services: ["Interior design", "3D-visuals", "Concept design"],
+    statement: "A space should not only be functional & aesthetically pleasing, but also impactful, inspiring and people-oriented.",
+    allProjects: "All projects", pictured: "Pictured:", byCat: "Projects by category",
+    count: n => `${n} ${n === 1 ? "project" : "projects"}`,
+    projIntro: "On this page, you'll find a collection of my design projects, showcasing my passion for user-centered interior design and creating inspiring, functional spaces. Each project reflects my focus on enhancing the well-being and experience of users.",
+    all: "All", backHome: "Back to Homepage", crumbs: "Breadcrumb", filter: "Filter by category", cats: "Categories",
+    catLabel: { office: "Office", "healthcare-projects": "Healthcare", hospitality: "Hospitality", residential: "Residential" },
+    software: "Software used in this project", pack: "View the Design & Technical Pack", open: "Open", next: "Next project",
+    backTo: { office: "Back to Office projects", "healthcare-projects": "Back to Healthcare projects", hospitality: "Back to Hospitality projects", residential: "Back to Residential projects" },
+    designer: "Interior designer", based: "based in The Netherlands",
+    bio: "I am Guusje Rozendom, an Interior Designer with a BA (Saxion University of Applied Sciences, Deventer NL). My passion lies in people-oriented design, with a focus on shared spaces such as offices, retail, and healthcare. Fascinated by the psychology of interiors, I create designs that are not only aesthetically pleasing, but also functional, inspiring, and supportive of well-being. By listening closely to clients and translating insights into clear concepts, I aim to develop interiors that truly serve their users.",
+    traitsH: "Qualities that characterize me:",
+    traits: ["Creative","Committed","Service-oriented","Empathetic","Goal-oriented","Strong abstract reasoning","Thorough"],
+    skills: "Software Proficiency", hello: "Let's connect!", helloBr: "Let's<br>connect!",
+    phone: "Phone:", linkedin: "LinkedIn", mail: "Mail:", copy: "Copy address", copied: "Address copied",
+    altPakhuis: "Render of red phone booths in The Warehouse", altPortrait: "Portrait of Guusje Rozendom", altMood: "Moodboard with material samples, tablet and coffee",
+    close: "Close", prev: "Previous", nextImg: "Next", image: "Image"
+  }
+};
+
+let L = "nl";
+const T = () => UI[L];
+const href = key => `#${L === "en" ? "en/" : ""}${key}`;
+const CAT = k => L === "en" ? { ...CATEGORIES[k], ...EN_CAT[k] } : CATEGORIES[k];
+function P(k) {
+  const p = PROJECTS[k];
+  if (L !== "en") return p;
+  const e = EN_PROJ[k];
+  return { ...p, ...e, sections: p.sections.map((s, i) => {
+    const es = e.sections[i];
+    return { ...s, sub: es.sub ?? s.sub, text: es.text,
+      meta: s.meta.map(([key], j) => [META_EN[key] || key, es.meta[j]]),
+      docs: s.docs && s.docs.map(([t, id], j) => [es.docs?.[j] ?? t, id]) };
+  }) };
+}
+
+/* ---------- kleur per categorie (uit de projecten zelf) ---------- */
+const CAT_COLOR = { office: "var(--moss)", "healthcare-projects": "var(--park)", hospitality: "var(--salmon)", residential: "var(--oak)" };
+const CAT_ON = { office: "#f6f7f3" };   /* tekstkleur op de band, standaard inkt */
+const PDF_SIZE = {"0285a27fca5f461bbe5d91a67d2b27be":15705158,"0b080edaf8404fab9f7e9ce76f033c44":75612430,"0e8a30a7601d45adb2291228a6295320":91980,"57f7fd5ddf114bb5a11507e5fb5a7e19":135546,"645b83398ff54a9b937a893a402c7808":291482,"7ad91f45c7fb478691f1d9762eef3ed9":70511,"7bb44357b6274a2d98700adddc19e30d":6069141,"842305f0fc2d4187ac811613a7638520":74153,"897279d8eff94f4b871b5860528e8e83":66219,"8ae4c43220e64878945f94f36c8f12bb":28379439,"904cbd4db54e426692b0b2b95af74d95":2522763,"91c580f331904e939339211d963a4105":19672456,"9917a984d28b41ee921b54d930c41c32":124344,"a980e301c6274da99f70b97d0bcb2211":537606,"c4852bdee5c048b4b5ce2c278a73b8cf":129027,"c76addd7375b43b69ccbe07560f6b2ab":100618};
+
+/* ---------- helpers ---------- */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;" }[c]));
+const plain = s => s.replace(/<br>/g, " ");
+const place = p => p.sections[0].meta[0][1];
+const year = p => p.sections[0].meta[1][1];
+const size = b => b >= 1e6 ? `${(b / 1e6).toLocaleString(T().locale, { maximumFractionDigits: 1 })} MB` : `${Math.round(b / 1e3)} kB`;
+const sw = cat => `<span class="sw" style="--c:${CAT_COLOR[cat]}" aria-hidden="true"></span>`;
+const soft = s => s.replace("Gezondheidszorg", "Gezondheids&shy;zorg").replace("Residentiële", "Residen&shy;tiële");
+
+function indexRow(k) {
+  const p = P(k);
+  return `
+  <li data-cat="${p.cat}"><a href="${href(k)}">
+    <div class="th"><img src="${img(p.cover, 600)}" alt="" loading="lazy"></div>
+    <div class="txt">
+      <h3>${esc(p.card)}</h3>
+      <div class="facts"><span>${sw(p.cat)}${T().catLabel[p.cat]}</span><span>${esc(place(p))}</span><span>${esc(year(p))}</span></div>
+    </div>
+  </a></li>`;
+}
+
+function gallery(list) {
+  const rows = []; let i = 0, a = true;
+  while (i < list.length) {
+    const n = a ? 3 : 2, chunk = list.slice(i, i + n); i += n; a = !a;
+    rows.push(chunk);
+  }
+  const im = (id, w) => `<img src="${img(id, w)}" alt="" loading="lazy" data-full="${img(id, 2400)}">`;
+  return `<div class="gallery">${rows.map(c => {
+    if (c.length === 1) return `<div class="g-full">${im(c[0], 2200)}</div>`;
+    if (c.length === 3) return `<div class="g-a">${im(c[0], 1800)}<div class="stack">${im(c[1], 900)}${im(c[2], 900)}</div></div>`;
+    return `<div class="g-b">${im(c[0], 1400)}${im(c[1], 1400)}</div>`;
+  }).join("")}</div>`;
+}
+
+/* ---------- pages ---------- */
+function pageHome() {
+  const t = T();
+  return `
+  <div class="page">
+    <section class="wrap name-hero">
+      <h1><span class="pf">Portfolio</span>Guusje Rozendom</h1>
+      <div class="hero-split">
+        <figure class="hero-img"><img src="${img("559dd3e66a2743548ca09462a4df35b7~mv2.jpg", 2400)}" alt="${t.altPakhuis}"></figure>
+        <div>
+          <ul class="services">${t.services.map(s => `<li>${s}</li>`).join("")}</ul>
+          <p class="hero-cap">${t.pictured} <a class="link" href="${href("warehouse")}">${esc(P("warehouse").card)}</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap statement">
+      <div class="side"><a class="link" href="${href("projects")}">${t.allProjects}</a></div>
+      <p>${esc(t.statement)}</p>
+    </section>
+
+    <section class="wrap">
+      <div class="deck-head"><h2>${t.byCat}</h2><span class="deck-count">${t.count(OVERVIEW_ORDER.length)}</span></div>
+      <div class="deck">
+        ${HOME_ORDER.map(k => { const c = CAT(k); return `
+        <a class="swatch" href="${href(k)}" style="--c:${CAT_COLOR[k]}">
+          <div class="chip"><img src="${img(c.cover, 1400)}" alt="" loading="lazy"></div>
+          <div class="label"><h3>${soft(esc(c.tile))}</h3><span class="count">${t.count(c.projects.length)}</span></div>
+        </a>`; }).join("")}
+      </div>
+      <p class="deck-foot"><a class="btn" href="${href("projects")}">${t.allProjects}</a></p>
+    </section>
+  </div>`;
+}
+
+function pageProjects() {
+  const t = T();
+  const btn = (key, label, n) =>
+    `<button type="button" data-filter="${key}" aria-pressed="${key === "all"}">${key === "all" ? "" : sw(key)}${label}<span class="n">${n}</span></button>`;
+  return `
+  <div class="page wrap">
+    <header class="head">
+      <h1>${t.projects}</h1>
+      <p class="intro">${t.projIntro}</p>
+    </header>
+    <div class="filters" role="toolbar" aria-label="${t.filter}">
+      ${btn("all", t.all, OVERVIEW_ORDER.length)}
+      ${HOME_ORDER.map(k => btn(k, t.catLabel[k], CATEGORIES[k].projects.length)).join("")}
+    </div>
+    <ul class="index" id="index">${OVERVIEW_ORDER.map(indexRow).join("")}</ul>
+    <p class="back-row"><a class="link" href="${href("home")}">${t.backHome}</a></p>
+  </div>`;
+}
+
+function pageCategory(key) {
+  const t = T(), c = CAT(key);
+  return `
+  <div class="page">
+    <section class="band" style="--c:${CAT_COLOR[key]};${CAT_ON[key] ? `--on:${CAT_ON[key]}` : ""}">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="${t.crumbs}"><a href="${href("projects")}">${t.projects}</a><span aria-hidden="true">/</span><span aria-current="page">${esc(c.title)}</span></nav>
+        <h1>${esc(c.title)}</h1>
+        <p class="intro">${esc(c.intro)}</p>
+        <nav class="filters" aria-label="${t.cats}">
+          <a href="${href("projects")}">${t.all}<span class="n">${OVERVIEW_ORDER.length}</span></a>
+          ${HOME_ORDER.map(k => `<a href="${href(k)}"${k === key ? ' aria-current="page"' : ""}>${t.catLabel[k]}<span class="n">${CATEGORIES[k].projects.length}</span></a>`).join("")}
+        </nav>
+      </div>
+    </section>
+    <div class="wrap">
+      <section class="cat-list${c.projects.length === 1 ? " solo" : ""}">
+        ${c.projects.map(k => { const p = P(k); return `
+        <a class="work" href="${href(k)}">
+          <div class="ph"><img src="${img(p.cover, c.projects.length === 1 ? 2400 : 1400)}" alt="" loading="lazy"></div>
+          <div><h2>${p.tile ? esc(p.tile) : plain(p.title)}</h2><p>${esc(place(p))}, ${esc(year(p))}</p></div>
+        </a>`; }).join("")}
+      </section>
+    </div>
+  </div>`;
+}
+
+function pageProject(key) {
+  const t = T(), p = P(key);
+  const i = OVERVIEW_ORDER.indexOf(key), nextKey = OVERVIEW_ORDER[(i + 1) % OVERVIEW_ORDER.length], nx = P(nextKey);
+  return `
+  <div class="page" style="--c:${CAT_COLOR[p.cat]}">
+    <header class="wrap p-top">
+      <nav class="crumbs" aria-label="${t.crumbs}"><a href="${href("projects")}">${t.projects}</a><span aria-hidden="true">/</span><a href="${href(p.cat)}">${sw(p.cat)} ${esc(CAT(p.cat).title)}</a></nav>
+      <h1>${p.title}</h1>
+    </header>
+    <div class="p-cover" data-full="${img(p.cover, 2400)}"><img src="${img(p.cover, 2400)}" alt=""></div>
+    <div class="wrap">
+      ${p.lead ? `<p class="p-lead">${esc(p.lead)}</p>` : ""}
+      ${p.sections.map(s => `
+      <section class="p-section">
+        ${s.sub ? `<h2>${esc(s.sub)}</h2>` : ""}
+        <div class="p-grid">
+          <p class="p-text">${esc(s.text)}</p>
+          <div>
+            <dl class="spec">
+              ${s.meta.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}
+              <div><dt>${t.software}</dt><dd><ul class="tools">${s.software.map(x => `<li><img src="${img(SOFTWARE[x][1], 120)}" alt="">${SOFTWARE[x][0]}</li>`).join("")}</ul></dd></div>
+            </dl>
+          </div>
+        </div>
+        ${gallery(s.gallery)}
+        ${s.docs ? `<div class="docs-block">
+          <h3>${t.pack}</h3>
+          <ul class="docs">${s.docs.map(([d, id]) => `<li><a href="${PDF(id)}" target="_blank" rel="noopener"><span>${esc(d)}</span><span class="size">PDF, ${size(PDF_SIZE[id] || 0)}</span><span class="open">${t.open}</span></a></li>`).join("")}</ul>
+        </div>` : ""}
+      </section>`).join("")}
+      <section class="p-next">
+        <p class="cap">${t.next}</p>
+        <a class="next" href="${href(nextKey)}">
+          <strong>${esc(nx.card)}</strong>
+          <div class="ph"><img src="${img(nx.cover, 600)}" alt="" loading="lazy"></div>
+        </a>
+        <p><a class="link" href="${href(p.cat)}">${t.backTo[p.cat]}</a></p>
+      </section>
+    </div>
+  </div>`;
+}
+
+function pageAbout() {
+  const t = T();
+  return `
+  <div class="page wrap">
+    <header class="about-top">
+      <div>
+        <h1>${t.designer}</h1>
+        <p class="based">${t.based}</p>
+      </div>
+      <div class="about-body">
+        <figure class="portrait"><img src="${img("07dd55bdf57d4214aae4a5c3d0d70c98~mv2.png", 900)}" alt="${t.altPortrait}"></figure>
+        <div>
+          <div class="bio"><p>${esc(t.bio)}</p></div>
+          <div class="traits">
+            <h2>${t.traitsH}</h2>
+            <ul>${t.traits.map(x => `<li>${x}</li>`).join("")}</ul>
+          </div>
+        </div>
+      </div>
+    </header>
+    <figure class="moodboard"><img src="${img("d863196d010e406399ce023fea8f1d92~mv2.png", 2400)}" alt="${t.altMood}" loading="lazy"></figure>
+    <section class="skills">
+      <h2>${t.skills}</h2>
+      <ul class="skill-grid">
+        ${Object.values(SOFTWARE).map(([n, id]) => `<li><img src="${img(id, 160)}" alt="" loading="lazy"><span>${n}</span></li>`).join("")}
+      </ul>
+    </section>
+    <a class="hello" href="${href("contact")}"><span>${esc(t.hello)}</span></a>
+  </div>`;
+}
+
+function pageContact() {
+  const t = T();
+  return `
+  <div class="page wrap">
+    <header class="head"><h1>${t.helloBr}</h1></header>
+    <ul class="contact-list">
+      <li><span class="lbl">${t.phone}</span><a class="val" href="tel:+31632275342">+31 6 32 27 53 42</a><span></span></li>
+      <li><span class="lbl">${t.linkedin}</span><a class="val" href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">@guusjerozendom</a><span></span></li>
+      <li><span class="lbl">${t.mail}</span><a class="val" href="mailto:guusje@gmail.com">guusje@gmail.com</a><button type="button" class="copy-btn" data-copy="guusje@gmail.com">${t.copy}</button></li>
+    </ul>
+    <figure class="moodboard"><img src="${img("d863196d010e406399ce023fea8f1d92~mv2.png", 2400)}" alt="${t.altMood}" loading="lazy"></figure>
+  </div>`;
+}
+
+/* ---------- router: #projects (NL) en #en/projects (EN) ---------- */
+function parse(h) {
+  let s = (h || "").replace(/^#\/?/, "");
+  let lang = "nl";
+  if (s === "en" || s.startsWith("en/")) { lang = "en"; s = s.slice(3); }
+  return { lang, key: s || "home" };
+}
+function render() {
+  const r = parse(location.hash);
+  L = r.lang;
+  try { localStorage.setItem("lang", L); } catch (e) {}
+  const key = r.key, t = T();
+  const app = document.getElementById("app");
+  let html, title, nav = "";
+  if (key === "projects") { html = pageProjects(); nav = "projects"; }
+  else if (key === "about") { html = pageAbout(); nav = "about"; }
+  else if (key === "contact") { html = pageContact(); nav = "contact"; }
+  else if (CATEGORIES[key]) { html = pageCategory(key); title = CAT(key).title; nav = "projects"; }
+  else if (PROJECTS[key]) { html = pageProject(key); title = plain(P(key).title); nav = "projects"; }
+  else { html = pageHome(); }
+  app.innerHTML = html;
+  app.querySelectorAll("img").forEach(i => {
+    if (i.complete && i.naturalWidth) return;
+    i.classList.add("fade");
+    const done = () => i.classList.add("loaded");
+    i.addEventListener("load", done, { once: true }); i.addEventListener("error", done, { once: true });
+  });
+
+  /* vaste delen: header, footer, lightbox */
+  document.documentElement.lang = L;
+  document.querySelectorAll("[data-route]").forEach(a => { a.href = href(a.dataset.route); });
+  document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t[el.dataset.i18n]; });
+  document.querySelectorAll("[data-i18n-label]").forEach(el => el.setAttribute("aria-label", t[el.dataset.i18nLabel]));
+  document.getElementById("lightbox").setAttribute("aria-label", t.image);
+  const routeKey = ["home", "projects", "about", "contact"].includes(key) || CATEGORIES[key] || PROJECTS[key] ? key : "home";
+  const nl = document.getElementById("lang-nl"), en = document.getElementById("lang-en");
+  nl.href = `#${routeKey}`; en.href = `#en/${routeKey}`;
+  nl.toggleAttribute("aria-current", L === "nl"); en.toggleAttribute("aria-current", L === "en");
+  document.querySelectorAll("[data-nav]").forEach(a => {
+    if (a.dataset.nav === nav) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
+  });
+  document.title = key === "home" ? t.home : `${title || t[key] || ""} | Guusje Rozendom`;
+  window.scrollTo({ top: 0, behavior: "instant" });
+}
+
+/* eerste bezoek zonder taal in de link: eerder gekozen taal onthouden */
+if (!location.hash) {
+  try { if (localStorage.getItem("lang") === "en") history.replaceState(null, "", "#en/home"); } catch (e) {}
+}
+window.addEventListener("hashchange", render);
+render();
+document.getElementById("year").textContent = new Date().getFullYear();
+
+const header = document.getElementById("header");
+const onScroll = () => header.classList.toggle("scrolled", scrollY > 8);
+addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+/* link naar de pagina waar je al bent (bijv. Portfolio op home): naar boven scrollen */
+document.addEventListener("click", e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+  const target = a.hasAttribute("data-top") ? null : parse(a.getAttribute("href")), cur = parse(location.hash);
+  if (!target || (target.key === cur.key && target.lang === cur.lang)) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
+  }
+});
+
+/* ---------- filter, kopiëren ---------- */
+let toastTimer;
+function toast(msg) {
+  document.querySelector(".toast")?.remove();
+  const el = Object.assign(document.createElement("div"), { className: "toast", textContent: msg });
+  el.setAttribute("role", "status");
+  document.body.append(el);
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => el.remove(), 1800);
+}
+document.getElementById("app").addEventListener("click", e => {
+  const f = e.target.closest("[data-filter]");
+  if (f) {
+    const v = f.dataset.filter;
+    f.parentElement.querySelectorAll("[data-filter]").forEach(b => b.setAttribute("aria-pressed", b === f));
+    document.querySelectorAll("#index li").forEach(li => { li.hidden = v !== "all" && li.dataset.cat !== v; });
+    return;
+  }
+  const c = e.target.closest("[data-copy]");
+  if (c) navigator.clipboard?.writeText(c.dataset.copy).then(() => toast(T().copied), () => toast(c.dataset.copy));
+});
+
+/* ---------- lightbox ---------- */
+const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lb-img"), lbCount = document.getElementById("lb-count");
+let set = [], idx = 0, lastFocus;
+const show = i => { idx = (i + set.length) % set.length; lbImg.src = set[idx]; lbCount.textContent = `${idx + 1} / ${set.length}`; };
+document.getElementById("app").addEventListener("click", e => {
+  const el = e.target.closest(".gallery img, .p-cover"); if (!el) return;
+  set = [...new Set([...document.querySelectorAll(".p-cover, .gallery img")].map(x => x.dataset.full))];
+  lastFocus = document.activeElement;
+  show(set.indexOf(el.dataset.full)); lb.hidden = false; document.body.style.overflow = "hidden";
+  document.getElementById("lb-close").focus();
+});
+const close = () => { lb.hidden = true; lbImg.removeAttribute("src"); document.body.style.overflow = ""; lastFocus?.focus?.(); };
+document.getElementById("lb-close").onclick = close;
+document.getElementById("lb-prev").onclick = () => show(idx - 1);
+document.getElementById("lb-next").onclick = () => show(idx + 1);
+lb.addEventListener("click", e => { if (e.target === lb || e.target.classList.contains("lb-stage")) close(); });
+let tx = null;
+lb.addEventListener("touchstart", e => { tx = e.touches[0].clientX; }, { passive: true });
+lb.addEventListener("touchend", e => {
+  if (tx === null) return; const dx = e.changedTouches[0].clientX - tx; tx = null;
+  if (Math.abs(dx) > 50) show(idx + (dx < 0 ? 1 : -1));
+});
+document.addEventListener("keydown", e => {
+  if (lb.hidden) return;
+  if (e.key === "Escape") close();
+  if (e.key === "ArrowLeft") show(idx - 1);
+  if (e.key === "ArrowRight") show(idx + 1);
+});
+</script>
+</body>
+</html>
