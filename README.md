@@ -1,6 +1,6 @@
 # Guusje Rozendom · Portfolio
 
-Portfolio van Guusje Rozendom, interieurontwerper: interieur ontwerp, 3D-visuals en concept ontwerp.
+Portfolio van Guusje Rozendom, interieurontwerpster: interieur ontwerp, 3D-visuals en concept ontwerp.
 
 ## Auteursrecht
 
