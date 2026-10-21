@@ -291,8 +291,7 @@ img.fade.loaded{opacity:1}
 .contact-list .lbl{font-size:15px;color:var(--mute)}
 .contact-list .val{font-size:clamp(1.6rem,4vw,3.4rem);font-weight:550;font-variation-settings:"wdth" 85;letter-spacing:-.03em;line-height:1.1;overflow-wrap:anywhere;transition:color .2s}
 .contact-list a.val:hover{color:var(--accent)}
-.contact-list button.val{justify-self:start;padding:0;border:0;background:none;font-family:inherit;color:var(--mute);text-align:left;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em}
-.contact-list button.val:hover{color:var(--accent)}
+.contact-list .val-muted{color:var(--mute)}
 .copy-btn{justify-self:start;display:inline-flex;align-items:center;white-space:nowrap;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-size:14px;font-weight:500;cursor:pointer}
 .copy-btn:hover{border-color:var(--accent);color:var(--accent)}
 
@@ -309,8 +308,6 @@ img.fade.loaded{opacity:1}
 .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:16.5px}
 .site-footer ul a{overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.25em;transition:text-decoration-color .2s,color .2s}
 .site-footer ul a:hover{color:#fff;text-decoration-color:currentColor}
-.reveal-link{padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(251,239,236,.45);text-underline-offset:.25em}
-.reveal-link:hover{color:#fff;text-decoration-color:currentColor}
 .foot-bottom{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 20px;margin-top:clamp(56px,8vw,112px);padding-top:16px;border-top:1px solid rgba(251,239,236,.28);font-size:14px;color:rgba(251,239,236,.72)}
 @media (min-width:640px){.foot-bottom{grid-template-columns:auto 1fr auto}}
 .foot-logo{font-weight:650;font-size:18px;letter-spacing:-.02em;font-variation-settings:"wdth" 88;color:#fff}
@@ -378,7 +375,6 @@ img.fade.loaded{opacity:1}
         <h2 data-i18n="contact">Contact</h2>
         <ul>
           <li><a href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><button type="button" class="reveal-link" data-phone="short" data-i18n="showPhoneFooter">Toon telefoonnummer</button></li>
           <li><a href="mailto:guusje@gmail.com">guusje@gmail.com</a></li>
         </ul>
       </div>
@@ -618,7 +614,7 @@ const UI = {
     traitsH: "Eigenschappen die mij kenmerken:",
     traits: ["Creatief","Betrokken","Servicegericht","Empathisch","Doelgericht","Goed in conceptueel denken","Nauwkeurig"],
     skills: "Softwarevaardigheid", hello: "Laten we kennismaken!", helloBr: "Laten we<br>kennismaken!",
-    phone: "Telefoon:", showPhone: "Toon nummer", showPhoneFooter: "Toon telefoonnummer", linkedin: "LinkedIn", mail: "Mail:", copy: "Kopieer adres", copied: "Adres gekopieerd",
+    phone: "Telefoon:", onRequest: "Op aanvraag", requestPhone: "Vraag aan per mail", phoneSubject: "Telefoonnummer opvragen", linkedin: "LinkedIn", mail: "Mail:", copy: "Kopieer adres", copied: "Adres gekopieerd",
     altPakhuis: "Render van rode telefooncellen in Het Pakhuis", altPortrait: "Portret van Guusje Rozendom", altMood: "Moodboard met materiaalstalen, tablet en koffie",
     close: "Sluiten", prev: "Vorige", nextImg: "Volgende", image: "Afbeelding"
   },
@@ -641,7 +637,7 @@ const UI = {
     traitsH: "Qualities that characterize me:",
     traits: ["Creative","Committed","Service-oriented","Empathetic","Goal-oriented","Strong abstract reasoning","Thorough"],
     skills: "Software Proficiency", hello: "Let's connect!", helloBr: "Let's<br>connect!",
-    phone: "Phone:", showPhone: "Show number", showPhoneFooter: "Show phone number", linkedin: "LinkedIn", mail: "Mail:", copy: "Copy address", copied: "Address copied",
+    phone: "Phone:", onRequest: "On request", requestPhone: "Request by email", phoneSubject: "Phone number request", linkedin: "LinkedIn", mail: "Mail:", copy: "Copy address", copied: "Address copied",
     altPakhuis: "Render of red phone booths in The Warehouse", altPortrait: "Portrait of Guusje Rozendom", altMood: "Moodboard with material samples, tablet and coffee",
     close: "Close", prev: "Previous", nextImg: "Next", image: "Image"
   }
@@ -884,7 +880,7 @@ function pageContact() {
   <div class="page wrap">
     <header class="head"><h1>${t.helloBr}</h1></header>
     <ul class="contact-list">
-      <li><span class="lbl">${t.phone}</span><button type="button" class="val reveal" data-phone="spaced">${t.showPhone}</button><span></span></li>
+      <li><span class="lbl">${t.phone}</span><span class="val val-muted">${t.onRequest}</span><a class="copy-btn" href="mailto:guusje@gmail.com?subject=${encodeURIComponent(t.phoneSubject)}">${t.requestPhone}</a></li>
       <li><span class="lbl">${t.linkedin}</span><a class="val" href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">@guusjerozendom</a><span></span></li>
       <li><span class="lbl">${t.mail}</span><a class="val" href="mailto:guusje@gmail.com">guusje@gmail.com</a><button type="button" class="copy-btn" data-copy="guusje@gmail.com">${t.copy}</button></li>
     </ul>
@@ -960,21 +956,6 @@ document.addEventListener("click", e => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
-});
-
-/* ---------- telefoonnummer pas tonen na een klik ----------
-   Het nummer staat in stukjes en achterstevoren in de code, zodat scrapers het niet herkennen. */
-const PHONE = ["2435", "7223", "61", "3+"];
-document.addEventListener("click", e => {
-  const b = e.target.closest("[data-phone]"); if (!b) return;
-  const raw = PHONE.join("").split("").reverse().join("");
-  const a = document.createElement("a");
-  a.href = "tel:" + raw;
-  a.className = b.className.replace(/\b(reveal|reveal-link)\b/g, "").trim();
-  a.textContent = b.dataset.phone === "spaced"
-    ? raw.replace(/^(\+\d\d)(\d)(\d\d)(\d\d)(\d\d)(\d\d)$/, "$1 $2 $3 $4 $5 $6")
-    : raw.replace(/^(\+\d\d)(\d)(\d+)$/, "$1 $2 $3");
-  b.replaceWith(a); a.focus();
 });
 
 /* ---------- filter, kopiëren ---------- */
