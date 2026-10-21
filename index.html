@@ -13,12 +13,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
-<!--  -->
+<!-- voorbeeld bij delen (LinkedIn, WhatsApp, enz.); volledige https-adressen op het www-domein,
+     want guusjerozendom.nl stuurt door naar www en LinkedIn/Facebook eisen een volledig adres -->
+<link rel="canonical" href="https://www.guusjerozendom.nl/">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://www.guusjerozendom.nl/">
 <meta property="og:site_name" content="Guusje Rozendom">
 <meta property="og:title" content="Guusje Rozendom · Interieurontwerper">
-<meta property="og:description" content="Portfolio van Guusje Rozendom: interieur ontwerp, 3D-visuals en concept ontwerp.">
-<meta property="og:image" content="http://guusjerozendom.nl/images/share.jpg">
+<meta property="og:description" content="Portfolio van Guusje Rozendom: interieurontwerp, 3D-visuals en conceptontwerp.">
+<meta property="og:image" content="https://www.guusjerozendom.nl/images/share.jpg">
+<meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Guusje Rozendom, interieurontwerper, met een render van Het Pakhuis">
@@ -286,9 +290,11 @@ img.fade.loaded{opacity:1}
 .contact-list li{display:grid;grid-template-columns:minmax(0,1fr);gap:4px 24px;padding:clamp(16px,2vw,24px) 0;border-bottom:1px solid var(--rule);align-items:baseline}
 @media (min-width:760px){.contact-list li{grid-template-columns:10em minmax(0,1fr) auto}}
 .contact-list .lbl{font-size:15px;color:var(--mute)}
-.contact-list a.val{font-size:clamp(1.6rem,4vw,3.4rem);font-weight:550;font-variation-settings:"wdth" 85;letter-spacing:-.03em;line-height:1.1;overflow-wrap:anywhere;transition:color .2s}
+.contact-list .val{font-size:clamp(1.6rem,4vw,3.4rem);font-weight:550;font-variation-settings:"wdth" 85;letter-spacing:-.03em;line-height:1.1;overflow-wrap:anywhere;transition:color .2s}
 .contact-list a.val:hover{color:var(--accent)}
-.copy-btn{justify-self:start;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-size:14px;font-weight:500;cursor:pointer}
+.contact-list button.val{justify-self:start;padding:0;border:0;background:none;font-family:inherit;color:var(--mute);text-align:left;cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.18em}
+.contact-list button.val:hover{color:var(--accent)}
+.copy-btn{justify-self:start;display:inline-flex;align-items:center;white-space:nowrap;height:36px;padding:0 14px;border-radius:999px;border:1px solid var(--rule);background:transparent;font-size:14px;font-weight:500;cursor:pointer}
 .copy-btn:hover{border-color:var(--accent);color:var(--accent)}
 
 /* footer: in Guusjes eigen kleur */
@@ -304,6 +310,8 @@ img.fade.loaded{opacity:1}
 .site-footer ul{list-style:none;margin:0;padding:0;display:grid;gap:7px;font-size:16.5px}
 .site-footer ul a{overflow-wrap:anywhere;text-decoration:underline;text-decoration-color:transparent;text-underline-offset:.25em;transition:text-decoration-color .2s,color .2s}
 .site-footer ul a:hover{color:#fff;text-decoration-color:currentColor}
+.reveal-link{padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer;text-decoration:underline;text-decoration-color:rgba(251,239,236,.45);text-underline-offset:.25em}
+.reveal-link:hover{color:#fff;text-decoration-color:currentColor}
 .foot-bottom{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:6px 20px;margin-top:clamp(56px,8vw,112px);padding-top:16px;border-top:1px solid rgba(251,239,236,.28);font-size:14px;color:rgba(251,239,236,.72)}
 @media (min-width:640px){.foot-bottom{grid-template-columns:auto 1fr auto}}
 .foot-logo{font-weight:650;font-size:18px;letter-spacing:-.02em;font-variation-settings:"wdth" 88;color:#fff}
@@ -356,7 +364,7 @@ img.fade.loaded{opacity:1}
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
-      <p class="claim" data-i18n="claim">Interieur ontwerp, 3D-visuals en concept ontwerp.</p>
+      <p class="claim" data-i18n="claim">Interieurontwerp, 3D-visuals en conceptontwerp.</p>
       <div>
         <h2 data-i18n="menu">Menu</h2>
         <ul>
@@ -370,7 +378,7 @@ img.fade.loaded{opacity:1}
         <h2 data-i18n="contact">Contact</h2>
         <ul>
           <li><a href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">LinkedIn</a></li>
-          <li><a href="tel:+31632275342">+31 6 32275342</a></li>
+          <li><button type="button" class="reveal-link" data-phone="short" data-i18n="showPhoneFooter">Toon telefoonnummer</button></li>
           <li><a href="mailto:guusje@gmail.com">guusje@gmail.com</a></li>
         </ul>
       </div>
@@ -434,7 +442,7 @@ const CATEGORIES = {
   },
   hospitality: {
     title: "Hospitality", tile: "Hospitalityprojecten", cover: "35d09b4c03a6476185f15d27c5c6ed56~mv2.png",
-    intro: "Hospitality ontwerp fascineert me omdat het verder gaat dan functionaliteit: het creëert ervaringen. Deze ruimtes nodigen mensen uit om contact te maken, te ontspannen, te studeren of gewoon te genieten van hun omgeving. Ik word geïnspireerd door de manier waarop sfeer, kleur en vorm stemming en gedrag kunnen beïnvloeden, waardoor een café, bibliotheek of lounge meer wordt dan alleen een plek om te verblijven. Door sociale waarde en welzijn in het ontwerp te verweven, streef ik ernaar omgevingen te creëren die persoonlijk, gastvrij en onvergetelijk aanvoelen.",
+    intro: "Hospitality-ontwerp fascineert me omdat het verder gaat dan functionaliteit: het creëert ervaringen. Deze ruimtes nodigen mensen uit om contact te maken, te ontspannen, te studeren of gewoon te genieten van hun omgeving. Ik word geïnspireerd door de manier waarop sfeer, kleur en vorm stemming en gedrag kunnen beïnvloeden, waardoor een café, bibliotheek of lounge meer wordt dan alleen een plek om te verblijven. Door sociale waarde en welzijn in het ontwerp te verweven, streef ik ernaar omgevingen te creëren die persoonlijk, gastvrij en onvergetelijk aanvoelen.",
     projects: ["library", "project-thailand"]
   },
   residential: {
@@ -482,7 +490,6 @@ const PROJECTS = {
     sections: [{
       text: "Voor de herontwikkeling van de voormalige goederenloods in Goor (NL) ontwierp ik een flexibel werkplekconcept met verhuurbare kantoren, belcellen en een café. Het ontwerp integreert kleurenpsychologie, natuurlijke materialen en akoestische oplossingen ter ondersteuning van focus, motivatie en welzijn. Een nieuwe gevel met grote ramen brengt daglicht tot diep in het gebouw en transformeert de gesloten schil tot een open en inspirerende werkomgeving.",
       gallery: ["2129af292b394ff3928bfd33e4d480ca~mv2.png","c887bdac6d7842b1be271d9de9cb841c~mv2.png","96af6e37ff11425295158633ecc4fe8d~mv2.png","013d0448f4344b9e9de536f66c1d6e92~mv2.png","5d8e6864e24f4b8188ad93fd1ee31d0e~mv2.png","9f4824160a9c4a76b25865d9fdc7b435~mv2.png","eda643348c3448b8873d03c7ff00efc4~mv2.png","559dd3e66a2743548ca09462a4df35b7~mv2.jpg","191c96e95d0f466abe1e686de0814aac~mv2.png","a32b51ef6a2e4bd8af3fef3ae3f54dc6~mv2.png","e80993e35801465eb95d0d1dbd61ad48~mv2.png","30274840b2a54a39bf8cd5db4dfac274~mv2.png"],
-      docs: [["Bestektekening","8ae4c43220e64878945f94f36c8f12bb"],["Lichtplan","7bb44357b6274a2d98700adddc19e30d"]],
       meta: [["Locatie","Goor, Nederland"],["Jaar","2023"],["Omvang","Volledig casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
       software: ["sketchup","vectorworks","enscape","indesign","photoshop"]
     }]
@@ -570,7 +577,6 @@ const EN_PROJ = {
       meta: ["Zwolle, The Netherlands","2025","Office","Guusje Rozendom","SPATIO Newminds (Axelio)"] }] },
   warehouse: { card: "Adaptive reuse – The Warehouse", title: "Adaptive reuse assignment<br>The Warehouse", tile: "Adaptive reuse assignment The Warehouse", sections: [{
     text: "For the redevelopment of the former goods warehouse in Goor (NL), I designed a flexible workspace concept with rentable offices, phone booths, and a café. The design integrates color psychology, natural materials, and acoustic solutions to support focus, motivation, and well-being. A new façade with large windows brings daylight deep into the building, transforming the closed shell into an open and inspiring work environment.",
-    docs: ["Technical drawing","Illumination plan"],
     meta: ["Goor, The Netherlands","2023","Whole shell building","Guusje Rozendom","Academic project (Year 3)"] }] },
   stepshop: { card: "Stepshop", title: "Stepshop", sections: [{
     text: "Stepshop is a scooter store that primarily operates online, with its office located in the warehouse. In this 34 m² office project, the goal was to combine living and working in one space. What was previously a formal office needed to be transformed into a warm, homelike environment with room for both work and relaxation. The design reduced the number of workstations from four to two, introduced comfortable seating and personal touches, and explored multiple layout options to create a welcoming, versatile atmosphere, incorporating round elements as a subtle reference to the wheels of a scooter.",
@@ -596,8 +602,8 @@ const UI = {
   nl: {
     locale: "nl-NL", home: "Guusje Rozendom · Portfolio", mainMenu: "Hoofdmenu",
     projects: "Projecten", about: "Over", contact: "Contact", portfolio: "Portfolio", menu: "Menu", top: "Terug naar boven",
-    claim: "Interieur ontwerp, 3D-visuals en concept ontwerp.",
-    services: ["Interieur ontwerp", "3D-visuals", "Concept ontwerp"],
+    claim: "Interieurontwerp, 3D-visuals en conceptontwerp.",
+    services: ["Interieurontwerp", "3D-visuals", "Conceptontwerp"],
     statement: "Een ruimte moet niet alleen functioneel en esthetisch aantrekkelijk zijn, maar ook impactvol, inspirerend en mensgericht.",
     allProjects: "Alle projecten", pictured: "Op de foto:", byCat: "Projecten per categorie",
     count: n => `${n} ${n === 1 ? "project" : "projecten"}`,
@@ -611,7 +617,7 @@ const UI = {
     traitsH: "Eigenschappen die mij kenmerken:",
     traits: ["Creatief","Betrokken","Servicegericht","Empathisch","Doelgericht","Goed in conceptueel denken","Nauwkeurig"],
     skills: "Softwarevaardigheid", hello: "Laten we kennismaken!", helloBr: "Laten we<br>kennismaken!",
-    phone: "Telefoon:", linkedin: "LinkedIn", mail: "Mail:", copy: "Kopieer adres", copied: "Adres gekopieerd",
+    phone: "Telefoon:", showPhone: "Toon nummer", showPhoneFooter: "Toon telefoonnummer", linkedin: "LinkedIn", mail: "Mail:", copy: "Kopieer adres", copied: "Adres gekopieerd",
     altPakhuis: "Render van rode telefooncellen in Het Pakhuis", altPortrait: "Portret van Guusje Rozendom", altMood: "Moodboard met materiaalstalen, tablet en koffie",
     close: "Sluiten", prev: "Vorige", nextImg: "Volgende", image: "Afbeelding"
   },
@@ -633,7 +639,7 @@ const UI = {
     traitsH: "Qualities that characterize me:",
     traits: ["Creative","Committed","Service-oriented","Empathetic","Goal-oriented","Strong abstract reasoning","Thorough"],
     skills: "Software Proficiency", hello: "Let's connect!", helloBr: "Let's<br>connect!",
-    phone: "Phone:", linkedin: "LinkedIn", mail: "Mail:", copy: "Copy address", copied: "Address copied",
+    phone: "Phone:", showPhone: "Show number", showPhoneFooter: "Show phone number", linkedin: "LinkedIn", mail: "Mail:", copy: "Copy address", copied: "Address copied",
     altPakhuis: "Render of red phone booths in The Warehouse", altPortrait: "Portrait of Guusje Rozendom", altMood: "Moodboard with material samples, tablet and coffee",
     close: "Close", prev: "Previous", nextImg: "Next", image: "Image"
   }
@@ -876,7 +882,7 @@ function pageContact() {
   <div class="page wrap">
     <header class="head"><h1>${t.helloBr}</h1></header>
     <ul class="contact-list">
-      <li><span class="lbl">${t.phone}</span><a class="val" href="tel:+31632275342">+31 6 32 27 53 42</a><span></span></li>
+      <li><span class="lbl">${t.phone}</span><button type="button" class="val reveal" data-phone="spaced">${t.showPhone}</button><span></span></li>
       <li><span class="lbl">${t.linkedin}</span><a class="val" href="https://www.linkedin.com/in/guusje-rozendom-037901251/" target="_blank" rel="noopener">@guusjerozendom</a><span></span></li>
       <li><span class="lbl">${t.mail}</span><a class="val" href="mailto:guusje@gmail.com">guusje@gmail.com</a><button type="button" class="copy-btn" data-copy="guusje@gmail.com">${t.copy}</button></li>
     </ul>
@@ -891,18 +897,21 @@ function parse(h) {
   if (s === "en" || s.startsWith("en/")) { lang = "en"; s = s.slice(3); }
   return { lang, key: s || "home" };
 }
+/* eigen sleutels alleen, zodat #constructor of #__proto__ niet als pagina telt */
+const own = (o, k) => Object.prototype.hasOwnProperty.call(o, k);
+const known = k => ["home", "projects", "about", "contact"].includes(k) || own(CATEGORIES, k) || own(PROJECTS, k);
 function render() {
   const r = parse(location.hash);
   L = r.lang;
   try { localStorage.setItem("lang", L); } catch (e) {}
-  const key = r.key, t = T();
+  const key = known(r.key) ? r.key : "home", t = T();
   const app = document.getElementById("app");
   let html, title, nav = "";
   if (key === "projects") { html = pageProjects(); nav = "projects"; }
   else if (key === "about") { html = pageAbout(); nav = "about"; }
   else if (key === "contact") { html = pageContact(); nav = "contact"; }
-  else if (CATEGORIES[key]) { html = pageCategory(key); title = CAT(key).title; nav = "projects"; }
-  else if (PROJECTS[key]) { html = pageProject(key); title = plain(P(key).title); nav = "projects"; }
+  else if (own(CATEGORIES, key)) { html = pageCategory(key); title = CAT(key).title; nav = "projects"; }
+  else if (own(PROJECTS, key)) { html = pageProject(key); title = plain(P(key).title); nav = "projects"; }
   else { html = pageHome(); }
   app.innerHTML = html;
   app.querySelectorAll("img").forEach(i => {
@@ -918,9 +927,8 @@ function render() {
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t[el.dataset.i18n]; });
   document.querySelectorAll("[data-i18n-label]").forEach(el => el.setAttribute("aria-label", t[el.dataset.i18nLabel]));
   document.getElementById("lightbox").setAttribute("aria-label", t.image);
-  const routeKey = ["home", "projects", "about", "contact"].includes(key) || CATEGORIES[key] || PROJECTS[key] ? key : "home";
   const nl = document.getElementById("lang-nl"), en = document.getElementById("lang-en");
-  nl.href = `#${routeKey}`; en.href = `#en/${routeKey}`;
+  nl.href = `#${key}`; en.href = `#en/${key}`;
   nl.toggleAttribute("aria-current", L === "nl"); en.toggleAttribute("aria-current", L === "en");
   document.querySelectorAll("[data-nav]").forEach(a => {
     if (a.dataset.nav === nav) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current");
@@ -950,6 +958,21 @@ document.addEventListener("click", e => {
     e.preventDefault();
     window.scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
   }
+});
+
+/* ---------- telefoonnummer pas tonen na een klik ----------
+   Het nummer staat in stukjes en achterstevoren in de code, zodat scrapers het niet herkennen. */
+const PHONE = ["2435", "7223", "61", "3+"];
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-phone]"); if (!b) return;
+  const raw = PHONE.join("").split("").reverse().join("");
+  const a = document.createElement("a");
+  a.href = "tel:" + raw;
+  a.className = b.className.replace(/\b(reveal|reveal-link)\b/g, "").trim();
+  a.textContent = b.dataset.phone === "spaced"
+    ? raw.replace(/^(\+\d\d)(\d)(\d\d)(\d\d)(\d\d)(\d\d)$/, "$1 $2 $3 $4 $5 $6")
+    : raw.replace(/^(\+\d\d)(\d)(\d+)$/, "$1 $2 $3");
+  b.replaceWith(a); a.focus();
 });
 
 /* ---------- filter, kopiëren ---------- */
