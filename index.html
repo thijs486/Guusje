@@ -123,6 +123,7 @@ img.fade.loaded{opacity:1}
 
 .statement{display:flex;justify-content:center;margin-top:clamp(64px,9vw,128px)}
 .statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);font-weight:400;font-variation-settings:"opsz" 17,"wdth" 100;letter-spacing:-.01em;line-height:1.3;max-width:30ch;text-align:center;text-wrap:balance}
+.statement strong{font-weight:650}
 
 /* stalenkaart */
 .deck-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:clamp(72px,10vw,140px) 0 20px}
@@ -603,6 +604,7 @@ const UI = {
     claim: "Interieurontwerp, 3D-visuals en conceptontwerp.",
     services: ["Interieurontwerp", "3D-visuals", "Conceptontwerp"],
     statement: "Een ruimte moet niet alleen functioneel en esthetisch aantrekkelijk zijn, maar ook impactvol, inspirerend en mensgericht.",
+    statementBold: "impactvol, inspirerend en mensgericht",
     allProjects: "Alle projecten", pictured: "Op de foto:", byCat: "Projecten per categorie",
     count: n => `${n} ${n === 1 ? "project" : "projecten"}`,
     projIntro: "Op deze pagina vindt u een verzameling van mijn ontwerpprojecten, die mijn passie voor gebruikersgerichte interieurontwerpen en het creëren van inspirerende, functionele ruimtes laten zien. Elk project weerspiegelt mijn focus op het verbeteren van de beleving van de gebruikers.",
@@ -625,6 +627,7 @@ const UI = {
     claim: "Interior design, 3D-visuals and concept design.",
     services: ["Interior design", "3D-visuals", "Concept design"],
     statement: "A space should not only be functional & aesthetically pleasing, but also impactful, inspiring and people-oriented.",
+    statementBold: "impactful, inspiring and people-oriented",
     allProjects: "All projects", pictured: "Pictured:", byCat: "Projects by category",
     count: n => `${n} ${n === 1 ? "project" : "projects"}`,
     projIntro: "On this page, you'll find a collection of my design projects, showcasing my passion for user-centered interior design and creating inspiring, functional spaces. Each project reflects my focus on enhancing the well-being and experience of users.",
@@ -738,7 +741,7 @@ function pageHome() {
     </section>
 
     <section class="wrap statement">
-      <p>${esc(t.statement)}</p>
+      <p>${esc(t.statement).replace(esc(t.statementBold), `<strong>${esc(t.statementBold)}</strong>`)}</p>
     </section>
 
     <section class="wrap">
