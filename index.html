@@ -6,10 +6,36 @@
 <title>Guusje Rozendom · Portfolio</title>
 <meta name="description" content="Portfolio van Guusje Rozendom, interieurontwerper. Interieurontwerp, 3D-visuals en conceptontwerp.">
 <meta name="theme-color" content="#e9ebe6">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,300..800&display=swap">
+<meta name="author" content="Guusje Rozendom">
+
+<!-- icoon -->
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!--  -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Guusje Rozendom">
+<meta property="og:title" content="Guusje Rozendom · Interieurontwerper">
+<meta property="og:description" content="Portfolio van Guusje Rozendom: interieur ontwerp, 3D-visuals en concept ontwerp.">
+<meta property="og:image" content="https://thijs486.github.io/Guusje/images/share.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Guusje Rozendom, interieurontwerper, met een render van Het Pakhuis">
+<meta property="og:locale" content="nl_NL">
+<meta property="og:locale:alternate" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="preload" href="fonts/bricolage-grotesque-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+/* Lettertype lokaal (SIL Open Font License, zie fonts/OFL.txt): geen verzoeken naar Google */
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;
+  src:url(fonts/bricolage-grotesque-latin-ext.woff2) format("woff2");
+  unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Bricolage Grotesque";font-style:normal;font-weight:300 800;font-stretch:75% 100%;font-display:swap;
+  src:url(fonts/bricolage-grotesque-latin.woff2) format("woff2");
+  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
 /* Concept: de stalenkaart. Gipswitte ondergrond, groen-zwarte inkt, en per categorie
    een kleur die uit haar eigen projecten komt. Eén lettertype: Bricolage Grotesque. */
 :root{
@@ -21,8 +47,8 @@
   --rule:#c9cdc5;         /* lijnen */
   --moss:#56653a;         /* Kantoor: moswanden Newminds */
   --park:#8aa287;         /* Zorg: het park in het ziekenhuis */
-  --salmon:#e2957f;       /* Hospitality: zalmtinten de Golf */
-  --oak:#c6a377;          /* Residentieel: Japandi-eiken */
+  --lime:#dfefca;         /* Hospitality */
+  --sage:#ccddd3;         /* Residentieel */
   --accent:#9c4a4a;       /* Guusjes eigen kleur: hover, focus, actief */
   --accent-deep:#813b3b;
   --accent-tint:#f1e2df;
@@ -56,7 +82,7 @@ img.fade.loaded{opacity:1}
 .link:hover{color:var(--accent);text-decoration-thickness:2px}
 .btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:999px;background:var(--ink);color:var(--paper);font-weight:500;font-size:16px;transition:background .2s}
 .btn:hover{background:var(--accent)}
-.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px;background:var(--c,var(--ink));flex:none;vertical-align:-.05em}
+.sw{display:inline-block;width:.8em;height:.8em;border-radius:2px;background:var(--c,var(--ink));box-shadow:inset 0 0 0 1px rgba(28,35,30,.14);flex:none;vertical-align:-.05em}
 
 /* header */
 .site-header{position:sticky;top:0;z-index:30;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--plaster) 86%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
@@ -93,8 +119,8 @@ img.fade.loaded{opacity:1}
 
 .statement{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:clamp(64px,9vw,128px)}
 @media (min-width:860px){.statement{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
-.statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);line-height:1.12;letter-spacing:-.025em;font-weight:450;max-width:22ch}
-.statement .side{align-self:end;padding-bottom:.4em}
+.statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);font-weight:400;font-variation-settings:"opsz" 17,"wdth" 100;letter-spacing:-.01em;line-height:1.3;max-width:26ch}
+@media (min-width:860px){.statement p{grid-column:2}}
 
 /* stalenkaart */
 .deck-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:clamp(72px,10vw,140px) 0 20px}
@@ -205,22 +231,9 @@ img.fade.loaded{opacity:1}
 .tools li{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:500}
 .tools img{width:26px;height:26px;border-radius:50%}
 
-.gallery{display:grid;gap:clamp(6px,.8vw,12px);margin-top:clamp(40px,5vw,64px)}
-.gallery img{width:100%;height:100%;object-fit:cover;border-radius:3px;background:var(--rule);cursor:zoom-in}
-.g-a{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:inherit}
-.g-a > img{aspect-ratio:1.5}
-.g-a .stack{display:grid;gap:inherit;grid-template-rows:1fr 1fr;min-height:0}
-.g-a .stack img{min-height:0}
-.g-b{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:inherit}
-.g-b img{aspect-ratio:1.3}
-.g-b img:last-child{aspect-ratio:auto}
-.g-full img{height:auto}
-@media (max-width:640px){
-  .g-a,.g-b{grid-template-columns:1fr}
-  .g-a .stack{grid-template-columns:1fr 1fr;grid-template-rows:auto}
-  .g-a .stack img{aspect-ratio:1.1}
-  .g-b img:last-child{aspect-ratio:1.3}
-}
+.gallery{--gg:clamp(10px,1.5vw,20px);display:grid;gap:var(--gg);margin-top:clamp(40px,5vw,64px)}
+.g-row{display:flex;gap:var(--gg);align-items:flex-start}
+.g-row img{flex:var(--r) 1 0%;width:0;min-width:0;height:auto;aspect-ratio:var(--r);object-fit:cover;border-radius:3px;background:var(--paper);cursor:zoom-in}
 .docs-block{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:minmax(0,1fr);gap:16px}
 @media (min-width:920px){.docs-block{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
 .docs-block h3{font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;max-width:16ch}
@@ -402,7 +415,7 @@ const SOFTWARE = {
   twinmotion: ["Twinmotion", "5c2f72d05f604c16b08f5bc8009305ca~mv2.png"],
   indesign:   ["Adobe InDesign", "364970c110ed4c45a21c7c9684c66a86~mv2.png"],
   photoshop:  ["Adobe Photoshop", "08e9ec63bca54541b8de44bc0246721f~mv2.png"],
-  office:     ["Ms Office", "8723f3d8e3e448e799e8148221fac1d0~mv2.png"],
+  office:     ["MS Office", "8723f3d8e3e448e799e8148221fac1d0~mv2.png"],
   canva:      ["Canva", "fc22d220b07e4296803b665482cc85dc~mv2.png"]
 };
 
@@ -410,17 +423,17 @@ Object.values(SOFTWARE).forEach(([, id]) => ICON_IDS.add(id));
 
 const CATEGORIES = {
   office: {
-    title: "Kantoor", tile: "Kantoor projecten", cover: "559dd3e66a2743548ca09462a4df35b7~mv2.jpg",
+    title: "Kantoor", tile: "Kantoorprojecten", cover: "559dd3e66a2743548ca09462a4df35b7~mv2.jpg",
     intro: "Door kantooromgevingen te ontwerpen, kan ik functionaliteit, welzijn en identiteit combineren. Ik creëer graag flexibele werkplekken die verschillende activiteiten ondersteunen – van geconcentreerd werken tot samenwerking en die tegelijkertijd elementen van psychologie, branding en sfeer integreren. Het resultaat is een omgeving die er niet alleen inspirerend uitziet, maar ook de productiviteit en verbinding versterkt.",
     projects: ["warehouse", "newminds-offices", "stepshop"]
   },
   "healthcare-projects": {
-    title: "Gezondheidszorgprojecten", tile: "Gezondheidszorg projecten", cover: "f9462600ebe5411d9af5e94b006ff561~mv2.png",
+    title: "Gezondheidszorgprojecten", tile: "Gezondheidszorgprojecten", cover: "f9462600ebe5411d9af5e94b006ff561~mv2.png",
     intro: "Zorgomgevingen vereisen meer dan alleen functionaliteit. Een doordacht ontwerp kan welzijn en herstel ondersteunen en tegelijkertijd strenge eisen combineren met warmte en inspiratie. Zo ontstaan ruimtes die patiënten, bezoekers en personeel van dienst zijn.",
     projects: ["hospital"]
   },
   hospitality: {
-    title: "Hospitality", tile: "Hospitality projecten", cover: "35d09b4c03a6476185f15d27c5c6ed56~mv2.png",
+    title: "Hospitality", tile: "Hospitalityprojecten", cover: "35d09b4c03a6476185f15d27c5c6ed56~mv2.png",
     intro: "Hospitality ontwerp fascineert me omdat het verder gaat dan functionaliteit: het creëert ervaringen. Deze ruimtes nodigen mensen uit om contact te maken, te ontspannen, te studeren of gewoon te genieten van hun omgeving. Ik word geïnspireerd door de manier waarop sfeer, kleur en vorm stemming en gedrag kunnen beïnvloeden, waardoor een café, bibliotheek of lounge meer wordt dan alleen een plek om te verblijven. Door sociale waarde en welzijn in het ontwerp te verweven, streef ik ernaar omgevingen te creëren die persoonlijk, gastvrij en onvergetelijk aanvoelen.",
     projects: ["library", "project-thailand"]
   },
@@ -435,7 +448,7 @@ const CAT_LABEL = { office: "Kantoor", "healthcare-projects": "Gezondheidszorg",
 
 const PROJECTS = {
   hospital: {
-    cat: "healthcare-projects", card: "Afstudeerproject - Ziekenhuis", title: "Afstudeerproject<br>Ziekenhuis",
+    cat: "healthcare-projects", card: "Afstudeerproject – Ziekenhuis", title: "Afstudeerproject<br>Ziekenhuis",
     cover: "f9462600ebe5411d9af5e94b006ff561~mv2.png",
     sections: [{
       text: "Voor mijn afstudeerproject ontwierp ik een helende omgeving voor een Nederlands ziekenhuis. Door onderzoek gedreven te ontwerpen integreerde ik de natuur in de entree, de centrale hal en het polikliniekplein, met als doel het welzijn van patiënten, bezoekers en personeel te verbeteren. Geïnspireerd door de positieve effecten van Nederlandse parken, brengt het concept de natuur terug in het ziekenhuisinterieur, wat zorgt voor vertrouwdheid, comfort en rust.",
@@ -446,7 +459,7 @@ const PROJECTS = {
     }]
   },
   "newminds-offices": {
-    cat: "office", card: "Newminds Office's", title: "Newminds kantoren",
+    cat: "office", card: "Newminds Offices", title: "Newminds kantoren",
     cover: "156acc981fff4cbd9e57f8825455dd5f~mv2.png",
     lead: "Voor Newminds heb ik twee kantoorontwerpen ontworpen waarin functionaliteit, identiteit en welzijn samenkomen. Het kantoor in Hengelo richtte zich op de transformatie van een casco tot een inspirerende werkplek, terwijl het project in Zwolle de identiteit van het SPATIO-team direct vertaalde naar hun omgeving.",
     sections: [{
@@ -464,18 +477,18 @@ const PROJECTS = {
     }]
   },
   warehouse: {
-    cat: "office", card: "Herbestemmingsopdracht - Het Pakhuis", title: "Herbestemmingsopdracht<br>Het Pakhuis",
+    cat: "office", card: "Herbestemmingsopdracht – Het Pakhuis", title: "Herbestemmingsopdracht<br>Het Pakhuis",
     cover: "559dd3e66a2743548ca09462a4df35b7~mv2.jpg",
     sections: [{
       text: "Voor de herontwikkeling van de voormalige goederenloods in Goor (NL) ontwierp ik een flexibel werkplekconcept met verhuurbare kantoren, belcellen en een café. Het ontwerp integreert kleurenpsychologie, natuurlijke materialen en akoestische oplossingen ter ondersteuning van focus, motivatie en welzijn. Een nieuwe gevel met grote ramen brengt daglicht tot diep in het gebouw en transformeert de gesloten schil tot een open en inspirerende werkomgeving.",
       gallery: ["2129af292b394ff3928bfd33e4d480ca~mv2.png","c887bdac6d7842b1be271d9de9cb841c~mv2.png","96af6e37ff11425295158633ecc4fe8d~mv2.png","013d0448f4344b9e9de536f66c1d6e92~mv2.png","5d8e6864e24f4b8188ad93fd1ee31d0e~mv2.png","9f4824160a9c4a76b25865d9fdc7b435~mv2.png","eda643348c3448b8873d03c7ff00efc4~mv2.png","559dd3e66a2743548ca09462a4df35b7~mv2.jpg","191c96e95d0f466abe1e686de0814aac~mv2.png","a32b51ef6a2e4bd8af3fef3ae3f54dc6~mv2.png","e80993e35801465eb95d0d1dbd61ad48~mv2.png","30274840b2a54a39bf8cd5db4dfac274~mv2.png"],
       docs: [["Bestektekening","8ae4c43220e64878945f94f36c8f12bb"],["Lichtplan","7bb44357b6274a2d98700adddc19e30d"]],
-      meta: [["Locatie","Goor, Nederland"],["Jaar","2023"],["Omvang","Volledig Casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
+      meta: [["Locatie","Goor, Nederland"],["Jaar","2023"],["Omvang","Volledig casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 3)"]],
       software: ["sketchup","vectorworks","enscape","indesign","photoshop"]
     }]
   },
   stepshop: {
-    cat: "office", card: "Stepshop-kantoor", title: "Stepshop", tile: "Stepshop kantoor",
+    cat: "office", card: "Stepshop", title: "Stepshop",
     cover: "bb10c59df1534756bc3dbc2d27d659fc~mv2.jpg",
     sections: [{
       text: "Stepshop is een step-winkel die voornamelijk online opereert en waarvan het kantoor zich in het magazijn bevindt. In dit kantoorproject van 34 m² was het doel om wonen en werken in één ruimte te combineren. Wat voorheen een formeel kantoor was, moest worden omgetoverd tot een warme, huiselijke omgeving met ruimte voor zowel werk als ontspanning. Het ontwerp bracht het aantal werkplekken terug van vier naar twee, introduceerde comfortabele zitmogelijkheden en persoonlijke accenten, en verkende diverse indelingsmogelijkheden om een gastvrije, veelzijdige sfeer te creëren, met ronde elementen als subtiele verwijzing naar de wielen van een step.",
@@ -501,23 +514,23 @@ const PROJECTS = {
       text: "Bibliotheek de Golf was mijn eerste interieurontwerpproject. Het combineerde een openbare bibliotheek met een grand café en extra studieplekken voor middelbare scholieren. Gelegen in de Rotterdamse wijk Feijenoord, speelt het ontwerp in op de lokale context door jongeren een gratis plek te bieden om te studeren, samen te werken en elkaar te ontmoeten. Het interieur is verdeeld in gastvrije zones voor sociale interactie, computergebruik en geconcentreerd studeren, waarbij kleurenpsychologie de sfeer en het gedrag bepaalt. Een vloeiende, golfachtige vorm verbindt de ruimtes, terwijl warme zalmtinten en dieppaars zowel energie als concentratie creëren. Het resultaat is een bibliotheek die open, uitnodigend en inspirerend aanvoelt voor haar diverse gemeenschap.",
       gallery: ["35d09b4c03a6476185f15d27c5c6ed56~mv2.png","0856c0d074ef4e6696baefcf10f06744~mv2.png","72d11d72d71e45e4a7358472a2b8efb7~mv2.png","20c30f89db294041bc4c90982f73a732~mv2.png","a4d289343c3346d4b5d4dbcdeabe1a80~mv2.png","01ed965d99ee4a219d031d8fcc61e439~mv2.png","358b6aa172054e3a83ddafad9d397d34~mv2.png","188b80600d464357a3904de65edd9876~mv2.png","197ae0a7be4f46f2b2889faa620e78c3~mv2.png"],
       docs: [["Ontwerpdossier","0285a27fca5f461bbe5d91a67d2b27be"]],
-      meta: [["Locatie","Rotterdam, Nederland"],["Jaar","2022"],["Omvang","Volledig Casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 2)"]],
+      meta: [["Locatie","Rotterdam, Nederland"],["Jaar","2022"],["Omvang","Volledig casco-gebouw"],["Ontwerper","Guusje Rozendom"],["Cliënt","Academisch project (jaar 2)"]],
       software: ["sketchup","vectorworks","twinmotion"]
     }]
   },
   "minimal-design": {
-    cat: "residential", card: "Minimal Design", title: "Minimalistisch ontwerp",
+    cat: "residential", card: "Minimal Design", title: "Minimal Design",
     cover: "bd50464eec384352a06fd9cdc616db0f~mv2.png",
     sections: [{
       text: "Voor dit project ontwierp ik een appartement van 28 m² voor young professionals, met de focus op duurzame en flexibele woonoplossingen. Multifunctioneel, op maat gemaakt meubilair en aanpasbare indelingen maken de kleine ruimte geschikt voor wonen, werken, slapen en eten zonder kwaliteit of comfort te verliezen. Door visuele ruis te minimaliseren en natuurlijke, biobased materialen in aardse tinten te gebruiken, creëert het ontwerp een rustige en tijdloze sfeer, terwijl elke vierkante meter optimaal wordt benut.",
       gallery: ["bd50464eec384352a06fd9cdc616db0f~mv2.png","62ce4809cca04118aecf62699631e23c~mv2.png","1ad721288c2346abb9281b5df8071127~mv2.png","73532b21e7694fba9c59d784d8066d55~mv2.png","0d0c8c7dc2bd49bb938418ad1aab25e9~mv2.png","69a3755bd31f447c9a37c0ce16306484~mv2.png","37f2b49c63f841309716d88bdc900bb8~mv2.png","ba9e0b2fa3ef4c4c8cc5dd48269a8c0c~mv2.png","5eb61705d4f8482ea7c1795718bc55fe~mv2.png","acf5bd31ee5048b397aeb8fb44f30b74~mv2.png","2ed291d82f3147758203e58b8f13cae8~mv2.png","e3753e5ad43d4ca8990a11e902d5aa45~mv2.png","b22ecc89abe343848661af0f9d25cc0b~mv2.png"],
       docs: [["Bestektekening","a980e301c6274da99f70b97d0bcb2211"],["Lichtplan","c76addd7375b43b69ccbe07560f6b2ab"],["Maatwerktekening ORI Cloudbed","c4852bdee5c048b4b5ce2c278a73b8cf"],["Maatwerktekening wandkast","9917a984d28b41ee921b54d930c41c32"],["Maatwerktekening verschuifbare kast","904cbd4db54e426692b0b2b95af74d95"],["Maatwerktekening onderstel verschuifbare kast ORI","0e8a30a7601d45adb2291228a6295320"],["Maatwerktekening doorsnede verschuifbare kast","7ad91f45c7fb478691f1d9762eef3ed9"],["Maatwerktekening detail uitklapbaar bureau 1","897279d8eff94f4b871b5860528e8e83"],["Maatwerktekening detail uitklapbaar bureau 2","842305f0fc2d4187ac811613a7638520"],["Ontwerpdossier","91c580f331904e939339211d963a4105"]],
-      meta: [["Locatie","Amsterdam, Nederland"],["Jaar","2023"],["Omvang","Appartement 28m2"],["Ontwerper","Guusje Rozendom"],["Cliënt","Minimal Design Eco, Academisch project"]],
+      meta: [["Locatie","Amsterdam, Nederland"],["Jaar","2023"],["Omvang","Appartement 28 m²"],["Ontwerper","Guusje Rozendom"],["Cliënt","Minimal Design Eco, academisch project"]],
       software: ["sketchup","vectorworks","enscape"]
     }]
   },
   kitchens: {
-    cat: "residential", card: "Keukenontwerp", title: "Keukens",
+    cat: "residential", card: "Keuken Hengelo", title: "Keuken Hengelo",
     cover: "be9c22f3443a4d8497e6f09f2c0b5ea8~mv2.png",
     sections: [{
       text: "Dit ontwerp is geïnspireerd op de Japandi-stijl – een mix van Japans minimalisme en Scandinavische warmte. Met strakke lijnen, natuurlijke materialen en neutrale tinten creëert het een tijdloze, serene en harmonieuze omgeving.",
@@ -542,38 +555,38 @@ const EN_CAT = {
     intro: "In residential design, listening closely to the client is key. By understanding their lifestyle, wishes, and unspoken needs, I create interiors that feel personal and authentic. My focus is on combining functionality with atmosphere, resulting in homes that offer both comfort and identity." }
 };
 const EN_PROJ = {
-  hospital: { card: "Graduation Project - Hospital", title: "Graduation project<br>Hospital", tile: "Graduation project Hospital", sections: [{
+  hospital: { card: "Graduation project – Hospital", title: "Graduation project<br>Hospital", tile: "Graduation project Hospital", sections: [{
     text: "For my graduation project, I designed a healing environment for a Dutch Hospital. Through research-driven design, I integrated nature into the entrance, central hall, and outpatient plaza, aiming to enhance the well-being of patients, visitors, and staff. Inspired by the positive effects of Dutch parks, the concept brings nature back into the hospital interior, creating familiarity, comfort, and tranquility.",
     docs: ["Technical drawing","Illumination plan","Custom design drawing 1","Custom design drawing 2","Design documentation (NL)"],
     meta: ["The Netherlands","2025","Entrance, Central Hall, Outpatient Plaza","Guusje Rozendom","Academic project (Year 4 - Graduation)"] }] },
-  "newminds-offices": { card: "Newminds Office's", title: "Newminds Office's",
+  "newminds-offices": { card: "Newminds Offices", title: "Newminds Offices",
     lead: "For Newminds, I created two office designs that balance functionality, identity, and well-being. The Hengelo office focused on transforming a shell into an inspiring workplace, while the Zwolle project translated the SPATIO team’s identity directly into their environment.",
     sections: [{
       sub: "Newminds Office Hengelo",
       text: "In Hengelo, I designed a functional and dynamic office by reusing existing furniture and building upon anthracite carpet tiles as a base. Through varied floor patterns, color zoning, and the integration of moss and plant walls, the workspace combines clarity and greenery while subtly reinforcing the company’s branding.",
-      meta: ["Hengelo, The Netherlands","2023","Office's","Guusje Rozendom","Newminds (Axelio)"] }, {
+      meta: ["Hengelo, The Netherlands","2023","Office","Guusje Rozendom","Newminds (Axelio)"] }, {
       sub: "SPATIO Newminds Office Zwolle",
       text: "For the SPATIO team in Zwolle, I emphasized identity and team spirit by incorporating logo colors, moss elements, and branded finishes. Natural greenery and acoustic solutions improve well-being and concentration, while styling elements such as atmospheric lighting create a warm, inviting atmosphere.",
       meta: ["Zwolle, The Netherlands","2025","Office","Guusje Rozendom","SPATIO Newminds (Axelio)"] }] },
-  warehouse: { card: "Adaptive reuse - The Warehouse", title: "Adaptive reuse assignment<br>The Warehouse", tile: "Adaptive reuse assignment The Warehouse", sections: [{
+  warehouse: { card: "Adaptive reuse – The Warehouse", title: "Adaptive reuse assignment<br>The Warehouse", tile: "Adaptive reuse assignment The Warehouse", sections: [{
     text: "For the redevelopment of the former goods warehouse in Goor (NL), I designed a flexible workspace concept with rentable offices, phone booths, and a café. The design integrates color psychology, natural materials, and acoustic solutions to support focus, motivation, and well-being. A new façade with large windows brings daylight deep into the building, transforming the closed shell into an open and inspiring work environment.",
     docs: ["Technical drawing","Illumination plan"],
-    meta: ["Goor, The Netherlands","2023","Whole Shell building","Guusje Rozendom","Academic project (Year 3)"] }] },
-  stepshop: { card: "Stepshop Office", title: "Stepshop", tile: "Stepshop Office", sections: [{
+    meta: ["Goor, The Netherlands","2023","Whole shell building","Guusje Rozendom","Academic project (Year 3)"] }] },
+  stepshop: { card: "Stepshop", title: "Stepshop", sections: [{
     text: "Stepshop is a scooter store that primarily operates online, with its office located in the warehouse. In this 34 m² office project, the goal was to combine living and working in one space. What was previously a formal office needed to be transformed into a warm, homelike environment with room for both work and relaxation. The design reduced the number of workstations from four to two, introduced comfortable seating and personal touches, and explored multiple layout options to create a welcoming, versatile atmosphere, incorporating round elements as a subtle reference to the wheels of a scooter.",
     meta: ["Hengelo, The Netherlands","2023","Office","Guusje Rozendom","Academic project (Year 3)"] }] },
   "project-thailand": { card: "Project Thailand", title: "Project Thailand", sections: [{
     text: "This team project in Thailand focused on designing tiny houses, a multifunctional hall, and a café under strict budget and material limitations. Using simple resources such as pallets, corrugated sheets, and second-hand windows, we created low-cost, buildable designs adapted to the tropical climate. My contribution included sketches for the tiny houses, the café, and the multifunctional hall, incorporating solutions such as elevated structures, sloped roofs for heavy rainfall, and natural ventilation.",
     meta: ["Thailand","2023","Multifunctional Hall, Café, Tiny House","Guusje Rozendom","Academic project (Year 3)"] }] },
-  library: { card: "Library & Cafe", title: "Library and Café", sections: [{
+  library: { card: "Library & Café", title: "Library and Café", sections: [{
     text: "Library the Wave was my first interior design project, combining a public library with a grand café and additional study spaces for high school students. Located in Rotterdam’s Feijenoord district, the design responds to the local context by offering young people a free place to study, collaborate, and meet. The interior is divided into welcoming zones for social interaction, computer use, and focused study, with color psychology guiding atmosphere and behavior. A flowing wave-like form connects the spaces, while warm salmon tones and deep purple create both energy and concentration. The result is a library that feels open, inviting, and inspiring for its diverse community.",
     docs: ["Design documentation (NL)"],
-    meta: ["Rotterdam, The Netherlands","2022","Whole Shell building","Guusje Rozendom","Academic project (Year 2)"] }] },
+    meta: ["Rotterdam, The Netherlands","2022","Whole shell building","Guusje Rozendom","Academic project (Year 2)"] }] },
   "minimal-design": { card: "Minimal Design", title: "Minimal Design", sections: [{
     text: "For this project, I designed a 28 m² apartment for young professionals, focusing on sustainable and flexible living solutions. Multifunctional, custom-made furniture and adaptable layouts allow the small space to accommodate living, working, sleeping, and dining without losing quality or comfort. By minimizing visual noise and using natural, biobased materials in earthy tones, the design creates a calm and timeless atmosphere while making optimal use of every square meter.",
     docs: ["Technical drawing","Illumination plan","Custom design drawing ORI Cloudbed","Custom design drawing built-in cabinet","Custom design drawing mobile cabinet","Custom design drawing mobile cabinet sliding mechanism ORI","Custom design drawing mobile cabinet cross-section","Custom design fold-out desk detail drawing 1","Custom design fold-out desk detail drawing 2","Design documentation (NL)"],
-    meta: ["Amsterdam, The Netherlands","2023","Apartment 28m2","Guusje Rozendom","Minimal Design Eco, academic project"] }] },
-  kitchens: { card: "Kitchen Design", title: "Kitchens", sections: [{
+    meta: ["Amsterdam, The Netherlands","2023","Apartment 28 m²","Guusje Rozendom","Minimal Design Eco, academic project"] }] },
+  kitchens: { card: "Kitchen Hengelo", title: "Kitchen Hengelo", sections: [{
     text: "This design is inspired by the Japandi style – a blend of Japanese minimalism and Scandinavian warmth. With clean lines, natural materials, and neutral tones, it creates a timeless, serene, and harmonious environment.",
     meta: ["Hengelo, The Netherlands","2025","Kitchen & Dining area","Guusje Rozendom","Family in Hengelo"] }] }
 };
@@ -643,7 +656,7 @@ function P(k) {
 }
 
 /* ---------- kleur per categorie (uit de projecten zelf) ---------- */
-const CAT_COLOR = { office: "var(--moss)", "healthcare-projects": "var(--park)", hospitality: "var(--salmon)", residential: "var(--oak)" };
+const CAT_COLOR = { office: "var(--moss)", "healthcare-projects": "var(--park)", hospitality: "var(--lime)", residential: "var(--sage)" };
 const CAT_ON = { office: "#f6f7f3" };   /* tekstkleur op de band, standaard inkt */
 const PDF_SIZE = {"0285a27fca5f461bbe5d91a67d2b27be":15705158,"0b080edaf8404fab9f7e9ce76f033c44":75612430,"0e8a30a7601d45adb2291228a6295320":91980,"57f7fd5ddf114bb5a11507e5fb5a7e19":135546,"645b83398ff54a9b937a893a402c7808":291482,"7ad91f45c7fb478691f1d9762eef3ed9":70511,"7bb44357b6274a2d98700adddc19e30d":6069141,"842305f0fc2d4187ac811613a7638520":74153,"897279d8eff94f4b871b5860528e8e83":66219,"8ae4c43220e64878945f94f36c8f12bb":28379439,"904cbd4db54e426692b0b2b95af74d95":2522763,"91c580f331904e939339211d963a4105":19672456,"9917a984d28b41ee921b54d930c41c32":124344,"a980e301c6274da99f70b97d0bcb2211":537606,"c4852bdee5c048b4b5ce2c278a73b8cf":129027,"c76addd7375b43b69ccbe07560f6b2ab":100618};
 
@@ -654,7 +667,7 @@ const place = p => p.sections[0].meta[0][1];
 const year = p => p.sections[0].meta[1][1];
 const size = b => b >= 1e6 ? `${(b / 1e6).toLocaleString(T().locale, { maximumFractionDigits: 1 })} MB` : `${Math.round(b / 1e3)} kB`;
 const sw = cat => `<span class="sw" style="--c:${CAT_COLOR[cat]}" aria-hidden="true"></span>`;
-const soft = s => s.replace("Gezondheidszorg", "Gezondheids&shy;zorg").replace("Residentiële", "Residen&shy;tiële");
+const soft = s => s.replace(/(\S)projecten/, "$1&shy;projecten").replace("Gezondheids", "Gezondheids&shy;").replace("Residentiële", "Residen&shy;tiële");
 
 function indexRow(k) {
   const p = P(k);
@@ -668,19 +681,41 @@ function indexRow(k) {
   </a></li>`;
 }
 
-function gallery(list) {
-  const rows = []; let i = 0, a = true;
-  while (i < list.length) {
-    const n = a ? 3 : 2, chunk = list.slice(i, i + n); i += n; a = !a;
-    rows.push(chunk);
+/* Collage: foto's in hun eigen verhouding, per rij even hoog en precies zo breed als de kolom.
+   Extreem brede of hoge foto's worden een klein beetje bijgesneden voor de samenhang. */
+const RATIO = {"013d0448f4344b9e9de536f66c1d6e92":1.779,"01c88a80867c428598cc48fd85cfe8ac":1.98,"01ed965d99ee4a219d031d8fcc61e439":1.779,"053cf34d1e7a4e8996f5cddcbcb7ef1f":2.219,"077738d9d2eb485dbadd609701f34c14":1.779,"07dd55bdf57d4214aae4a5c3d0d70c98":0.856,"0856c0d074ef4e6696baefcf10f06744":1.779,"0c451c1de5d343eb921deb5ddc549f4a":1.779,"0c5d03b1c22a4a208e0e649e8dc28e34":1.779,"0d0c8c7dc2bd49bb938418ad1aab25e9":1.779,"0d269a2c4d26484d82f20cee6889ad91":1.501,"1282ab432f9240d8a968df8e314e214f":1.779,"156acc981fff4cbd9e57f8825455dd5f":1.779,"188b80600d464357a3904de65edd9876":1.779,"191c96e95d0f466abe1e686de0814aac":1.779,"197ae0a7be4f46f2b2889faa620e78c3":1.779,"1ad721288c2346abb9281b5df8071127":1.779,"207388011b6d431a9ac765984f428936":1.779,"20c30f89db294041bc4c90982f73a732":1.779,"2129af292b394ff3928bfd33e4d480ca":1.779,"22bbc89226f04ad3873ac2020b0c30b9":1.779,"23a3027188f04977b0d1345622b62880":1.779,"254c6e2352e44422b137b20bc918f239":1.779,"2ed291d82f3147758203e58b8f13cae8":1.779,"2fc2ab419e3a414183958d262a54a299":1.779,"30274840b2a54a39bf8cd5db4dfac274":1.779,"32b320340b524ddc9961054169608dbb":1.779,"358b6aa172054e3a83ddafad9d397d34":1.779,"35d09b4c03a6476185f15d27c5c6ed56":1.779,"37f2b49c63f841309716d88bdc900bb8":1.779,"3a355c257c744751b7083d19ae21b080":1.779,"402be349c5164f1d81a18934d330c701":1.779,"4d03b106bfe646df90e1884c236fe857":1.779,"4dfdf13a783d4856a9eae94a9d546a67":1.779,"51a8763e3b6f469a8cec59e5759abb18":1.779,"559dd3e66a2743548ca09462a4df35b7":1.466,"5cb1622498bb4f728c6150fedaa48593":1.779,"5d8e6864e24f4b8188ad93fd1ee31d0e":1.779,"5eb61705d4f8482ea7c1795718bc55fe":1.779,"61af3b5e3b4647ffb371ae838f48edeb":1.779,"62ce4809cca04118aecf62699631e23c":1.779,"69a3755bd31f447c9a37c0ce16306484":1.779,"6a6ad4977b884ed5b035aa4ac4a07176":1.779,"708230c995884433864b8992e8e8697c":1.779,"72d11d72d71e45e4a7358472a2b8efb7":1.779,"73532b21e7694fba9c59d784d8066d55":1.779,"7b6746a34f754fd19804139b5870ae29":1.779,"8694ee26f4d44e9d9dcbc1a3989cc061":1.779,"87f8f466e53c493eb373a44eef48c634":1.779,"8a52acaf3d27470fb5854f9aab4218d9":1.779,"8dafa16f570e45a0ba8e07b3566973f2":1.975,"96af6e37ff11425295158633ecc4fe8d":1.779,"97399ff8042a4f379511fcdcaebdd34d":1.779,"9f4824160a9c4a76b25865d9fdc7b435":1.779,"a32b51ef6a2e4bd8af3fef3ae3f54dc6":1.779,"a4d289343c3346d4b5d4dbcdeabe1a80":1.779,"a5de393f69984ebe801ded9c0d69280d":1.779,"acf5bd31ee5048b397aeb8fb44f30b74":1.779,"b22ecc89abe343848661af0f9d25cc0b":1.779,"b5b04973a17f4413ad85c5223a3c5348":1.779,"ba9e0b2fa3ef4c4c8cc5dd48269a8c0c":1.779,"bb10c59df1534756bc3dbc2d27d659fc":1.779,"bb436ebb83fd4c86b1f63a785f3eb3d1":1.779,"bd50464eec384352a06fd9cdc616db0f":1.779,"be9c22f3443a4d8497e6f09f2c0b5ea8":1.779,"bf2c08f4097c417aa1422278a94fc17a":1.779,"c887bdac6d7842b1be271d9de9cb841c":1.779,"c8a59d4a45a74d5586c35f6550c9cbe9":1.779,"c9c840506bc1478e821bfac56d358075":1.501,"cd37431a5ba94044aa6cfac4989b2f41":1.779,"cd5f47d8d312429f9e86356f2da61c28":1.779,"cebe9e28277e49d5b67c5884e20a0b47":1.779,"d7711a348d904da1a9424c189abda76d":1.779,"d863196d010e406399ce023fea8f1d92":1.501,"db341214c2c54e2a9bb62ef7e517ce2d":1.779,"e06a85692f794414a50ada59021bb566":1.779,"e3753e5ad43d4ca8990a11e902d5aa45":1.779,"e80993e35801465eb95d0d1dbd61ad48":1.779,"eb6eecdabfe645c49e3fcc11d4411485":1.779,"ed189151b2b242c2bc41a2a101bb3577":1.779,"eda643348c3448b8873d03c7ff00efc4":1.779,"f9462600ebe5411d9af5e94b006ff561":1.779};
+const ratioOf = id => Math.min(2, Math.max(.75, RATIO[hash(id)] || 1.5));
+const GRID = [  /* [minimale schermbreedte, ritme: aantal foto's per rij] */
+  [900, [3, 2]], [600, [2]], [0, [1, 2]]
+];
+function rowsFor(list) {
+  const [, rhythm] = GRID.find(([w]) => innerWidth >= w);
+  const rows = [];
+  for (let i = 0, r = 0; i < list.length; r++) {
+    const n = rhythm[r % rhythm.length];
+    rows.push(list.slice(i, i + n)); i += n;
   }
-  const im = (id, w) => `<img src="${img(id, w)}" alt="" loading="lazy" data-full="${img(id, 2400)}">`;
-  return `<div class="gallery">${rows.map(c => {
-    if (c.length === 1) return `<div class="g-full">${im(c[0], 2200)}</div>`;
-    if (c.length === 3) return `<div class="g-a">${im(c[0], 1800)}<div class="stack">${im(c[1], 900)}${im(c[2], 900)}</div></div>`;
-    return `<div class="g-b">${im(c[0], 1400)}${im(c[1], 1400)}</div>`;
-  }).join("")}</div>`;
+  /* een losse laatste foto bij de rij ervoor zetten, zodat hij niet enorm wordt */
+  const max = Math.max(...rhythm), last = rows[rows.length - 1], prev = rows[rows.length - 2];
+  if (prev && last.length === 1 && max > 2) {
+    if (prev.length < max) prev.push(...rows.pop()); else last.unshift(prev.pop());
+  }
+  return rows;
 }
+function galleryRows(list) {
+  return rowsFor(list).map(row => {
+    const w = row.length === 1 ? 2400 : 1400;
+    return `<div class="g-row">${row.map(id => `<img src="${img(id, w)}" alt="" loading="lazy" data-full="${img(id, 2400)}" style="--r:${ratioOf(id)}">`).join("")}</div>`;
+  }).join("");
+}
+const gallery = list => `<div class="gallery" data-ids="${list.join(" ")}">${galleryRows(list)}</div>`;
+let gridStep = GRID.findIndex(([w]) => innerWidth >= w);
+addEventListener("resize", () => {
+  const step = GRID.findIndex(([w]) => innerWidth >= w);
+  if (step === gridStep) return;
+  gridStep = step;
+  document.querySelectorAll(".gallery[data-ids]").forEach(g => { g.innerHTML = galleryRows(g.dataset.ids.split(" ")); });
+});
 
 /* ---------- pages ---------- */
 function pageHome() {
@@ -699,7 +734,6 @@ function pageHome() {
     </section>
 
     <section class="wrap statement">
-      <div class="side"><a class="link" href="${href("projects")}">${t.allProjects}</a></div>
       <p>${esc(t.statement)}</p>
     </section>
 
