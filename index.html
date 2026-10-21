@@ -121,10 +121,8 @@ img.fade.loaded{opacity:1}
 .hero-cap{margin:14px 0 0;font-size:14px;color:var(--mute)}
 .hero-cap a:hover{color:var(--accent)}
 
-.statement{display:grid;grid-template-columns:minmax(0,1fr);gap:24px;margin-top:clamp(64px,9vw,128px)}
-@media (min-width:860px){.statement{grid-template-columns:minmax(0,1fr) minmax(0,2fr)}}
-.statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);font-weight:400;font-variation-settings:"opsz" 17,"wdth" 100;letter-spacing:-.01em;line-height:1.3;max-width:26ch}
-@media (min-width:860px){.statement p{grid-column:2}}
+.statement{display:flex;justify-content:center;margin-top:clamp(64px,9vw,128px)}
+.statement p{margin:0;font-size:clamp(1.6rem,3.3vw,2.9rem);font-weight:400;font-variation-settings:"opsz" 17,"wdth" 100;letter-spacing:-.01em;line-height:1.3;max-width:30ch;text-align:center;text-wrap:balance}
 
 /* stalenkaart */
 .deck-head{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin:clamp(72px,10vw,140px) 0 20px}
